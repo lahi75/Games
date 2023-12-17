@@ -24,7 +24,7 @@ namespace MonkeyMadness
 
         public bool ShowMouseCursor
         {
-            get { return _jack1.State == JJJack.States.won || _jack1.State == JJJack.States.dead; }
+            get { return _jack1.State == MMJack.States.won || _jack1.State == MMJack.States.dead; }
         }
         public bool DrawAd()
         {
@@ -47,7 +47,7 @@ namespace MonkeyMadness
 
         JJMonsters _monster;
         JJHoles _holes;
-        JJJack _jack1;
+        MMJack _jack1;
         JJLines _lines;
 
         Game _gameMain;
@@ -69,12 +69,12 @@ namespace MonkeyMadness
 
         Int32 _cumulatedPoints = 0;
 
-        JJPoints _points = new JJPoints();
+        MMPoints _points = new MMPoints();
 
         Rectangle _titleSafe;
         Rectangle _screenRect;
-       // JJLevelPage _levelPage;
-       // JJOverPage _gameOverPage;
+        MMLevelPage _levelPage;
+        MMOverPage _gameOverPage;
 
         public void Activate(IDictionary<string, object> dict)
         {
@@ -102,14 +102,14 @@ namespace MonkeyMadness
             _lines = new JJLines(gameMain);
             _holes = new JJHoles(gameMain);
             _monster = new JJMonsters(gameMain);
-            _jack1 = new JJJack(gameMain);
+            _jack1 = new MMJack(gameMain);
             _bonuses = new MMBonuses(gameMain);
 
             _numberLives = gameMain.Content.Load<Texture2D>("bonus/bonus_life");
             _background = gameMain.Content.Load<Texture2D>("background/form_aux");            
 
-         //   _levelPage = new JJLevelPage(gameMain, screenRect, _titleSafe);
-         //   _gameOverPage = new JJOverPage(gameMain, screenRect, titleSafe);            
+            _levelPage = new MMLevelPage(gameMain, screenRect, _titleSafe);
+            _gameOverPage = new MMOverPage(gameMain, screenRect, titleSafe);            
         }
 
         public void Init(MMSettings.DifficultyType difficulty, Boolean trial)
@@ -160,7 +160,7 @@ namespace MonkeyMadness
             _level = 1;
             _points.Init(_level);
             
-            //_levelPage.Reset(_level);
+            _levelPage.Reset(_level);
 
             MonitorManager.Monitor.ResetGame();
 
@@ -255,7 +255,7 @@ namespace MonkeyMadness
             }
 
             // play noises according to jacks state
-            if (_jack1.State == JJJack.States.stunned)
+            if (_jack1.State == MMJack.States.stunned)
             {
                 MMFxManager.Fx.PlayBirdScream(true);                
             }
@@ -265,31 +265,31 @@ namespace MonkeyMadness
             }
 
             // exit the game if jack lost all his lifes
-            if (_jack1.State == JJJack.States.dead)
+            if (_jack1.State == MMJack.States.dead)
             {
                 MonitorManager.Monitor.Score(_cumulatedPoints + _points.Points);
 
-              //  if (_gameOverPage.Update(gameTime, mousePosition, mouseDown, _points, _cumulatedPoints) == JJOverPage.Result.exit)
+                if (_gameOverPage.Update(gameTime, mousePosition, mouseDown, _points, _cumulatedPoints) == MMOverPage.Result.exit)
                 {
-                //    _cumulatedPoints += _points.Points;                    
-                  //  return GameResult.exit;
+                   _cumulatedPoints += _points.Points;                    
+                    return GameResult.exit;
                 }
             }
 
-            if (_jack1.State == JJJack.States.won)
+            if (_jack1.State == MMJack.States.won)
             {
                 MonitorManager.Monitor.LevelTime((int)_levelTotalTime.TotalSeconds);
                 MonitorManager.Monitor.CheckPleasant();
                 MonitorManager.Monitor.CheckLefty();                
                 MonitorManager.Monitor.SuperMonkey(_difficulty, _level);
 
-               // if (_levelPage.Update(gameTime, mousePosition, mouseDown, _points, _cumulatedPoints, _levelTotalTime) == JJLevelPage.Result.exit)
+                if (_levelPage.Update(gameTime, mousePosition, mouseDown, _points, _cumulatedPoints, _levelTotalTime) == MMLevelPage.Result.exit)
                 {
-               //     if (NextLevel() == false)
-                 //   {
-                   //     _cumulatedPoints += _points.Points;                        
-                   //     return GameResult.exit;
-                   // }
+                    if (NextLevel() == false)
+                    {
+                        _cumulatedPoints += _points.Points;                        
+                        return GameResult.exit;
+                    }
                 }
             }
 
@@ -314,7 +314,7 @@ namespace MonkeyMadness
             if (MusicPlayer.IsExternalPlay)
                 return;
 
-            if (_jack1.State == JJJack.States.won || _jack1.State == JJJack.States.dead)
+            if (_jack1.State == MMJack.States.won || _jack1.State == MMJack.States.dead)
             {
                 if (MediaPlayer.Volume != 0.3f)
                     MediaPlayer.Volume = 0.3f;
@@ -345,18 +345,18 @@ namespace MonkeyMadness
                 return;
             }           
 
-            if (_jack1.State == JJJack.States.won)
+            if (_jack1.State == MMJack.States.won)
             {
                 bool showTrial = false;
 
                 if (_level == 2 && _trial)
                     showTrial = true;
 
-             //   _levelPage.Draw(spriteBatch, showTrial);
+                _levelPage.Draw(spriteBatch, showTrial);
             }
-            else if (_jack1.State == JJJack.States.dead)
+            else if (_jack1.State == MMJack.States.dead)
             {                
-               // _gameOverPage.Draw(spriteBatch);
+                _gameOverPage.Draw(spriteBatch);
             }
             else
             {
@@ -500,15 +500,15 @@ namespace MonkeyMadness
 
             UpdateBackground();
 
-            if (_jack1.State == JJJack.States.won)
+            if (_jack1.State == MMJack.States.won)
             {
-              //  if (_levelPage.Counting())
-                //    _levelPage.Finish();
+                if (_levelPage.Counting())
+                    _levelPage.Finish();
 
                 NextLevel();
                 AchievementsManager.SaveSettings();
             }
-            else if (_jack1.State == JJJack.States.dead)
+            else if (_jack1.State == MMJack.States.dead)
             {
                 AchievementsManager.SaveSettings();                
             }
@@ -534,7 +534,7 @@ namespace MonkeyMadness
             _jack1.Reset();
             _holes.Reset();
             _bonuses.Clear();
-            //_levelPage.Reset(_level);
+            _levelPage.Reset(_level);
             
             _cumulatedPoints += _points.Points;
 

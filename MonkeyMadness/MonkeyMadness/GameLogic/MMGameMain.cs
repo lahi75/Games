@@ -59,10 +59,10 @@ namespace MonkeyMadness
 
         MMGameLogic _gameLogic;
         MMWelcomePage _welcomePage;
-        //JJInfoPage _infoPage;
-        //JJOptionsPage _optionsPage;
-        //JJHighScorePage _highScorePage;
-        //JJAchievementsPage _achievementsPage;
+        MMInfoPage _infoPage;
+        MMOptionsPage _optionsPage;
+        MMHighScorePage _highScorePage;
+        MMAchievementsPage _achievementsPage;
         CultureInfo _oldCulture;
       
 
@@ -81,41 +81,44 @@ namespace MonkeyMadness
 
            _welcomePage = new MMWelcomePage(gameMain, screenRect, titleSafe,_oldCulture.Parent.TwoLetterISOLanguageName);
 
-//            _infoPage = new JJInfoPage(gameMain, screenRect);
+            _infoPage = new MMInfoPage(gameMain, screenRect);
 
-  //          _optionsPage = new JJOptionsPage(gameMain, screenRect, titleSafe);
+              _optionsPage = new MMOptionsPage(gameMain, screenRect, titleSafe);
 
-    //        _highScorePage = new JJHighScorePage(gameMain, screenRect);
+            _highScorePage = new MMHighScorePage(gameMain, screenRect);
           
             _gameMain = gameMain;
 
             // load settings from isolated storage
-      //      SettingsManager.LoadSettings();
+            SettingsManager.LoadSettings();
             AchievementsManager.LoadSettings(gameMain);
-          //  LocalHighscoreManager.LoadSettings();
+            LocalHighscoreManager.LoadSettings();
 
-            //_achievementsPage = new JJAchievementsPage(gameMain, screenRect);
+            _achievementsPage = new MMAchievementsPage(gameMain, screenRect);
             
-            MMFxManager.LoadSettings(gameMain);           
-                                    
+            MMFxManager.LoadSettings(gameMain);
+
+            SetName("Cheeta");
+
+
 
             Init();           
         }        
                
         public void SetVersion(string s)
         {
-            //_infoPage.SetVersion(s);
+            _infoPage.SetVersion(s);
         }
 
         public void SetName(string s)
         {
             // if not set...set the user name
-            //if (SettingsManager.Settings.Playername.Length == 0)
+            if (SettingsManager.Settings.Playername.Length == 0)
             {                                
                 // limit to _maxNameLength letter        
-              //  SettingsManager.Settings.Playername = s.Substring(0, s.Length >= _maxNameLength ? _maxNameLength : s.Length);
-              //  SettingsManager.SaveSettings();
-              //  _optionsPage.Playername = SettingsManager.Settings.Playername;            
+                SettingsManager.Settings.Playername = s.Substring(0, s.Length >= _maxNameLength ? _maxNameLength : s.Length);
+                SettingsManager.SaveSettings();
+                _optionsPage.Playername = SettingsManager.Settings.Playername;            
             }
         }
 
@@ -138,10 +141,10 @@ namespace MonkeyMadness
 
         void Init()
         {
-            //_optionsPage.Difficulty = SettingsManager.Settings.Difficulty;
-            //_optionsPage.Music = SettingsManager.Settings.Music;
-            //_optionsPage.FX = SettingsManager.Settings.Fx;
-            //_optionsPage.Playername = SettingsManager.Settings.Playername;
+            _optionsPage.Difficulty = SettingsManager.Settings.Difficulty;
+            _optionsPage.Music = SettingsManager.Settings.Music;
+            _optionsPage.FX = SettingsManager.Settings.Fx;
+            _optionsPage.Playername = SettingsManager.Settings.Playername;
 
             // in debug reset achievments
             #if DEBUG
@@ -180,9 +183,7 @@ namespace MonkeyMadness
                     {
                         MediaPlayer.IsRepeating = true;
 
-                        //  int level = _gameLogic.CurrentLevel % 4 + 1;
-
-                        int level = 1;
+                        int level = _gameLogic.CurrentLevel % 4 + 1;                        
 
                         if (_currentSong != level)
                         {
@@ -204,7 +205,7 @@ namespace MonkeyMadness
             }
             else
             {                
-                if (true /*SettingsManager.Settings.Music*/)
+                if (SettingsManager.Settings.Music)
                 {
                     if (_currentSong != -1)
                     {                        
@@ -219,7 +220,7 @@ namespace MonkeyMadness
                         }
                         catch 
                         { 
-                            //SettingsManager.Settings.Music = false;
+                            SettingsManager.Settings.Music = false;
                             _currentSong = -2;
                         }
                     }
@@ -260,21 +261,21 @@ namespace MonkeyMadness
                                 _gameLogic.Start();
                                 break;
                             case MMWelcomePage.WelcomeResult.options:
-                                //_currentState = GameState.Options;
+                                _currentState = GameState.Options;
                                 break;
                             case MMWelcomePage.WelcomeResult.exit:
                                 return GameResult.exit;
                             case MMWelcomePage.WelcomeResult.info:
-                                //_currentState = GameState.Info;
+                                _currentState = GameState.Info;
                                 break;
                             case MMWelcomePage.WelcomeResult.achievements:
-                            //    _currentState = GameState.Achievements;
+                                _currentState = GameState.Achievements;
                                 break;
                             case MMWelcomePage.WelcomeResult.highscore:                                
-                              //  _currentState = GameState.HighScore;
-                                //_highScorePage.Difficulty = SettingsManager.Settings.Difficulty; // initialize the view with the current difficulty
+                                _currentState = GameState.HighScore;
+                                _highScorePage.Difficulty = SettingsManager.Settings.Difficulty; // initialize the view with the current difficulty
                                 // reset last game
-                                //_highScorePage.LastGame("",0, SettingsManager.Settings.Difficulty);
+                                _highScorePage.LastGame("",0, SettingsManager.Settings.Difficulty);
                                 break;
                             default:
                                 // TODO
@@ -292,19 +293,19 @@ namespace MonkeyMadness
                             case MMGameLogic.GameResult.exit:
 
                                 // submit the score to the online ladder, save in a local file
-                                //SendScore();
+                                SendScore();
 
                                 if( MusicPlayer.IsExternalPlay == false)
                                     MediaPlayer.Stop();
 
                                 // initial view of on the highscorelist
-                                //_highScorePage.Difficulty = SettingsManager.Settings.Difficulty;
+                                _highScorePage.Difficulty = SettingsManager.Settings.Difficulty;
                                 // highlight the last game in the list
-                                //_highScorePage.LastGame(SettingsManager.Settings.Playername, _gameLogic.CumulatedPoints, SettingsManager.Settings.Difficulty);
+                                _highScorePage.LastGame(SettingsManager.Settings.Playername, _gameLogic.CumulatedPoints, SettingsManager.Settings.Difficulty);
                                 _currentState = GameState.HighScore;                                
                                 _showMouseCursor = true;
                                 AchievementsManager.SaveSettings();
-                                //LocalHighscoreManager.SaveSettings();
+                                LocalHighscoreManager.SaveSettings();
                                 break;
                             default:
                                 _showMouseCursor = _gameLogic.ShowMouseCursor;
@@ -312,14 +313,14 @@ namespace MonkeyMadness
                         }
                     }
                     break;
-                    /*
+                    
                 case GameState.Info:
                     {
                         _showMouseCursor = true;
 
                         switch (_infoPage.Update(position, clickDown))
                         {                            
-                            case JJInfoPage.Result.exit:
+                            case MMInfoPage.Result.exit:
                                 _currentState = GameState.Welcome;
                                 break;
                             default:
@@ -333,7 +334,7 @@ namespace MonkeyMadness
 
                         switch (_optionsPage.Update(position, clickDown))
                         {
-                            case JJOptionsPage.Result.exit:
+                            case MMOptionsPage.Result.exit:
                                 _currentState = GameState.Welcome;
 
                                 // save the new difficulty in the isolated storage
@@ -357,7 +358,7 @@ namespace MonkeyMadness
 
                         switch (_highScorePage.Update(gameTime, position, clickDown))
                         {
-                            case JJHighScorePage.Result.exit:
+                            case MMHighScorePage.Result.exit:
                                 _currentState = GameState.Welcome;
                                 break;
                             default:
@@ -365,17 +366,18 @@ namespace MonkeyMadness
                         }
                     }
                     break;
+                    
                 case GameState.Achievements:
                     switch (_achievementsPage.Update(position, clickDown))
                     {
-                        case JJAchievementsPage.Result.exit:
+                        case MMAchievementsPage.Result.exit:
                             _currentState = GameState.Welcome;
                             break;
                         default:
                             break;
                     }
                     break;
-                    */
+                    
                 default:
                     break;
             }
@@ -398,16 +400,16 @@ namespace MonkeyMadness
                     _welcomePage.Draw(_spriteBatch,_trial);
                     break;
                 case GameState.Options:
-                    //_optionsPage.Draw(_spriteBatch);
+                    _optionsPage.Draw(_spriteBatch);
                     break;
                 case GameState.Info:
-                    //_infoPage.Draw(_spriteBatch);
+                    _infoPage.Draw(_spriteBatch);
                     break;
                 case GameState.Achievements:
-                    //_achievementsPage.Draw(_spriteBatch);
+                    _achievementsPage.Draw(_spriteBatch);
                     break;
                 case GameState.HighScore:
-                    //_highScorePage.Draw(_spriteBatch);
+                    _highScorePage.Draw(_spriteBatch);
                     break;
             }
 
@@ -423,16 +425,16 @@ namespace MonkeyMadness
                     _gameLogic.Left();
                     break;
                 case GameState.Options:
-                    //if (Debounce(time, ref _debounceBtnStart))
-                      //  _optionsPage.Left();                    
+                    if (Debounce(time, ref _debounceBtnStart))
+                        _optionsPage.Left();                    
                     break;
                 case GameState.HighScore:
-                    //if( Debounce(time, ref _debounceBtnStart) )
-                        //_highScorePage.Left();                    
+                    if( Debounce(time, ref _debounceBtnStart) )
+                        _highScorePage.Left();                    
                     break;
                 case GameState.Achievements:
-                    //if (Debounce(time, ref _debounceBtnStart))
-                      // _achievementsPage.Left();
+                    if (Debounce(time, ref _debounceBtnStart))
+                       _achievementsPage.Left();
                     break;
             }                       
         }
@@ -445,16 +447,16 @@ namespace MonkeyMadness
                     _gameLogic.Right();
                     break;
                 case GameState.Options:
-                    //if (Debounce(time, ref _debounceBtnStart))
-                      //  _optionsPage.Right();
+                    if (Debounce(time, ref _debounceBtnStart))
+                        _optionsPage.Right();
                     break;
                 case GameState.HighScore:
-                    //if (Debounce(time, ref _debounceBtnStart))
-                    //    _highScorePage.Right();
+                    if (Debounce(time, ref _debounceBtnStart))
+                        _highScorePage.Right();
                     break;
                 case GameState.Achievements:
-                    //if (Debounce(time, ref _debounceBtnStart))
-                    //   _achievementsPage.Right();
+                    if (Debounce(time, ref _debounceBtnStart))
+                       _achievementsPage.Right();
                     break;
             }                       
         }
@@ -479,16 +481,16 @@ namespace MonkeyMadness
                         _welcomePage.Up();
                     break;
                 case GameState.Options:
-                    //if (Debounce(time, ref _debounceBtnStart))
-                    //    _optionsPage.Up();
+                    if (Debounce(time, ref _debounceBtnStart))
+                        _optionsPage.Up();
                     break;
                 case GameState.HighScore:
-                    //if (Debounce(time, ref _debounceBtnStart))
-                    //    _highScorePage.Up();
+                    if (Debounce(time, ref _debounceBtnStart))
+                        _highScorePage.Up();
                     break;
                 case GameState.Achievements:
-                    //if (Debounce(time, ref _debounceBtnStart))
-                    //    _achievementsPage.Up();
+                    if (Debounce(time, ref _debounceBtnStart))
+                        _achievementsPage.Up();
                     break;
             }           
         }
@@ -502,16 +504,16 @@ namespace MonkeyMadness
                         _welcomePage.Down();
                     break;
                 case GameState.Options:
-                    //if (Debounce(time, ref _debounceBtnStart))
-                    //    _optionsPage.Down();
+                    if (Debounce(time, ref _debounceBtnStart))
+                        _optionsPage.Down();
                     break;
                 case GameState.HighScore:
-                    //if (Debounce(time, ref _debounceBtnStart))
-                    //    _highScorePage.Down();
+                    if (Debounce(time, ref _debounceBtnStart))
+                        _highScorePage.Down();
                     break;
                 case GameState.Achievements:
-                    //if (Debounce(time, ref _debounceBtnStart))
-                    //    _achievementsPage.Down();
+                    if (Debounce(time, ref _debounceBtnStart))
+                        _achievementsPage.Down();
                     break;
             }
         }
@@ -528,23 +530,23 @@ namespace MonkeyMadness
             if (_currentState == GameState.Options)
             {
                 // save the new difficulty in the isolated storage
-                //SettingsManager.Settings.Difficulty = _optionsPage.Difficulty;
-                //SettingsManager.Settings.Music = _optionsPage.Music;
-                //SettingsManager.Settings.Fx = _optionsPage.FX;
-                //SettingsManager.SaveSettings();
+                SettingsManager.Settings.Difficulty = _optionsPage.Difficulty;
+                SettingsManager.Settings.Music = _optionsPage.Music;
+                SettingsManager.Settings.Fx = _optionsPage.FX;
+                SettingsManager.SaveSettings();
             }
 
             if (_currentState == GameState.Achievements)
             {                
-               // if (_achievementsPage.Back() == false) // stay in this page when we return from details page to overview page
-               //     return false;
+                if (_achievementsPage.Back() == false) // stay in this page when we return from details page to overview page
+                    return false;
             }
 
 
-            //JJFxManager.Fx.StopAll();
+            MMFxManager.Fx.StopAll();
 
-            //if( _currentState == GameState.Game )
-              //  AchievementsManager.SaveSettings();
+            if( _currentState == GameState.Game )
+                AchievementsManager.SaveSettings();
             
             if( MusicPlayer.IsExternalPlay == false )
                 MediaPlayer.Stop();
@@ -581,20 +583,20 @@ namespace MonkeyMadness
 
         void SendScore()
         {
-            /*
-            JJHighscore hs = new JJHighscore();
+            
+            MMHighscore hs = new MMHighscore();
 
             string mode = "1";
 
             switch (SettingsManager.Settings.Difficulty)
             {
-                case JJSettings.DifficultyType.easy:
+                case MMSettings.DifficultyType.easy:
                     mode = "1";
                     break;
-                case JJSettings.DifficultyType.medium:
+                case MMSettings.DifficultyType.medium:
                     mode = "2";
                     break;
-                case JJSettings.DifficultyType.hard:
+                case MMSettings.DifficultyType.hard:
                     mode = "3";
                     break;
             }
@@ -613,10 +615,10 @@ namespace MonkeyMadness
             Score score = new Score(mode, SettingsManager.Settings.Playername, info, _gameLogic.CumulatedPoints, "DE");
 
             hs.SendScore(score);
-
+            
             LocalHighscoreManager.Highscore.AddScore(SettingsManager.Settings.Difficulty, score);
 
-            */
+            
         }     
             
     }

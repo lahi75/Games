@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace MonkeyMadness
 {
-    class JJPoints
+    class MMPoints
     {       
         public void Init(Int32 level)
         {

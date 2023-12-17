@@ -11,12 +11,12 @@ namespace MonkeyMadness
     /// <summary>
     /// class for the game avatar
     /// </summary>
-    class JJJack
+    class MMJack
     {        
         /// <summary>
         /// constructor
         /// </summary>        
-        public JJJack(Game gameMain)
+        public MMJack(Game gameMain)
         {
             _gameMain = gameMain;
 
