@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace MonkeyMadness
 {
@@ -39,7 +36,6 @@ namespace MonkeyMadness
 
         public void Fall()
         {
-
             if (_points > 10 * LevelModifier())
                 _points -= (int)(10 * LevelModifier());
             else
@@ -53,12 +49,10 @@ namespace MonkeyMadness
             else
                 _points = 0;
         }
-
         public void BonusCatched()
         {
             _points += (int)(15 * LevelModifier());
         }
-
         public void MonsterCrash()
         {
             if (_points > 15 * LevelModifier())
@@ -89,7 +83,5 @@ namespace MonkeyMadness
 
         Int32 _points = 0;
         Int32 _level = 1;
-
-
     }
 }

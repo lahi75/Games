@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AchievementCheater" xml:space="preserve">
+    <value>Cheater</value>
+  </data>
+  <data name="AchievementCheaterDescription" xml:space="preserve">
+    <value>Collect all bonus item during a level</value>
+  </data>
+  <data name="AchievementDrillerKiller" xml:space="preserve">
+    <value>Driller Killer</value>
+  </data>
+  <data name="AchievementDrillerKillerDescription" xml:space="preserve">
+    <value>Finish a level by drilling through the last line</value>
+  </data>
+  <data name="AchievementGhostBuster" xml:space="preserve">
+    <value>Ghost Buster</value>
+  </data>
+  <data name="AchievementGhostBusterDescription" xml:space="preserve">
+    <value>Remove 3 mosters from the game</value>
+  </data>
+  <data name="AchievementIcarus" xml:space="preserve">
+    <value>Icarus</value>
+  </data>
+  <data name="AchievementIcarusDescription" xml:space="preserve">
+    <value>Fall down 3 lines without getting up in between</value>
+  </data>
+  <data name="AchievementLefty" xml:space="preserve">
+    <value>Lefty</value>
+  </data>
+  <data name="AchievementLeftyDescription" xml:space="preserve">
+    <value>Use holes moving from left to right only</value>
+  </data>
+  <data name="AchievementLuckyDevilDescription" xml:space="preserve">
+    <value>Fall down 3 lines and recover at the bottom line</value>
+  </data>
+  <data name="AchievementNewbie" xml:space="preserve">
+    <value>Newbie</value>
+  </data>
+  <data name="AchievementNewbieDescription" xml:space="preserve">
+    <value>No points at game end</value>
+  </data>
+  <data name="AchievementSpeedyGonzales" xml:space="preserve">
+    <value>Speedy</value>
+  </data>
+  <data name="AchievementSpeedyGonzalesDescription" xml:space="preserve">
+    <value>Finish a level within 30 seconds</value>
+  </data>
+  <data name="AchievementStalker" xml:space="preserve">
+    <value>Stalker</value>
+  </data>
+  <data name="AchievementStalkerDescription" xml:space="preserve">
+    <value>Get stunned by 3 monsters without getting up in between</value>
+  </data>
+  <data name="AchievementSuper" xml:space="preserve">
+    <value>Super Monkey</value>
+  </data>
+  <data name="AchievementSuperDescription" xml:space="preserve">
+    <value>Reach level 5 at difficulty hard</value>
+  </data>
+  <data name="AchievementTumbler" xml:space="preserve">
+    <value>Tumbler</value>
+  </data>
+  <data name="AchievementTumblerDescription" xml:space="preserve">
+    <value>Recover 3 times from monster crashes</value>
+  </data>
+  <data name="AchievmentLuckyDevil" xml:space="preserve">
+    <value>Lucky Devil</value>
+  </data>
+  <data name="AchievmentPleasantJourney" xml:space="preserve">
+    <value>Pleasant</value>
+  </data>
+  <data name="AchievmentPleasantJourneyDescription" xml:space="preserve">
+    <value>Finish a level without falling down or monster crash</value>
+  </data>
+  <data name="strAward" xml:space="preserve">
+    <value>Awards</value>
+  </data>
+  <data name="strBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="strConcrats" xml:space="preserve">
+    <value>Congratulations</value>
+  </data>
+  <data name="strEasy" xml:space="preserve">
+    <value>Easy</value>
+  </data>
+  <data name="strExit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="strFX" xml:space="preserve">
+    <value>Sound FX</value>
+  </data>
+  <data name="strGameOver" xml:space="preserve">
+    <value>Game Over</value>
+  </data>
+  <data name="strHard" xml:space="preserve">
+    <value>Hard</value>
+  </data>
+  <data name="strHighScore" xml:space="preserve">
+    <value>Records</value>
+  </data>
+  <data name="strHighScoreAll" xml:space="preserve">
+    <value>All Time High</value>
+  </data>
+  <data name="strHighScoreLocal" xml:space="preserve">
+    <value>Local</value>
+  </data>
+  <data name="strHighScoreRequestURL" xml:space="preserve">
+    <value>http://lars.msbase.de/highscores/requestscores_mm.php</value>
+  </data>
+  <data name="strHighScoreSendURL" xml:space="preserve">
+    <value>http://lars.msbase.de/highscores/newscore_mm.php</value>
+  </data>
+  <data name="strhighScoreUpdate" xml:space="preserve">
+    <value>Updating</value>
+  </data>
+  <data name="strHighScoreWeek" xml:space="preserve">
+    <value>Champ of the Week</value>
+  </data>
+  <data name="strInfo" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="strInfoAudioContent" xml:space="preserve">
+    <value>http://www.soundjay.com</value>
+  </data>
+  <data name="strInfoAudioLabel" xml:space="preserve">
+    <value>Audio and Music: </value>
+  </data>
+  <data name="strInfoContactContent" xml:space="preserve">
+    <value>monkey@phoebit.com</value>
+  </data>
+  <data name="strInfoContactLabel" xml:space="preserve">
+    <value>Contact: </value>
+  </data>
+  <data name="strInfoHeader" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="strInfoHowtoContent" xml:space="preserve">
+    <value>http://apps.phoebit.com</value>
+  </data>
+  <data name="strInfoHowtoLabel" xml:space="preserve">
+    <value>How to play: </value>
+  </data>
+  <data name="strInfoLeave" xml:space="preserve">
+    <value>Leave at one side and enter at the other</value>
+  </data>
+  <data name="strInfoMonster" xml:space="preserve">
+    <value>Don't run into monsters</value>
+  </data>
+  <data name="strInfoTap" xml:space="preserve">
+    <value>Tap the display to jump</value>
+  </data>
+  <data name="strInfoTilt" xml:space="preserve">
+    <value>Tilt the phone to move the monkey</value>
+  </data>
+  <data name="strInfoVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="strLevel" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="strLevelGo" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="strLives" xml:space="preserve">
+    <value>Lives</value>
+  </data>
+  <data name="strMedium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="strMusic" xml:space="preserve">
+    <value>Music</value>
+  </data>
+  <data name="strNextLevel" xml:space="preserve">
+    <value>Next Level</value>
+  </data>
+  <data name="strOptionAudio" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="strOptionDifficulty" xml:space="preserve">
+    <value>Difficulty</value>
+  </data>
+  <data name="strOptions" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="strOptionsUsername" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="strPlay" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="strPoints" xml:space="preserve">
+    <value>Points</value>
+  </data>
+  <data name="strTime" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="strTrial" xml:space="preserve">
+    <value>Trial</value>
+  </data>
+  <data name="strTrialAds" xml:space="preserve">
+    <value>Zero Ads</value>
+  </data>
+  <data name="strTrialBye" xml:space="preserve">
+    <value>Buy Monkey Madness on Marketplace</value>
+  </data>
+  <data name="strTrialLevel" xml:space="preserve">
+    <value>More Levels</value>
+  </data>
+  <data name="strTrialMonster" xml:space="preserve">
+    <value>More Monsters</value>
+  </data>
+  <data name="strEnterUserName" xml:space="preserve">
+    <value>Enter a username for the highscore list</value>
+  </data>
+  <data name="strInfoXboxJump" xml:space="preserve">
+    <value>Press A to jump</value>
+  </data>
+  <data name="strUserName" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="strInfoXBoxRun" xml:space="preserve">
+    <value>Left thumbstick to run</value>
+  </data>
+  <data name="strInfoHint" xml:space="preserve">
+    <value>Jump when the hint appears</value>
+  </data>
+  <data name="moreGamesURL" xml:space="preserve">
+    <value>http://apps.phoebit.com/games</value>
+  </data>
+  <data name="newsURL" xml:space="preserve">
+    <value>http://lars.msbase.de/news/news.php</value>
+  </data>
+  <data name="phoebitURL" xml:space="preserve">
+    <value>http://apps.phoebit.com/</value>
+  </data>
+  <data name="test" xml:space="preserve">
+    <value>test</value>
+  </data>
+</root>

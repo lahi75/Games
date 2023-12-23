@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Audio;
 
 namespace MonkeyMadness
 {
@@ -31,7 +25,7 @@ namespace MonkeyMadness
 
         public MMOverPage(Game gameMain, Rectangle screenRect, Rectangle titleSafe)
         {
-            _buttonContinue = new MMButton(gameMain, "Go", false, false);
+            _buttonContinue = new MMButton(gameMain, Properties.Resources.strLevelGo, false, false);
 
             _buttonContinue.CenterPosition(new Vector2(titleSafe.Width / 2 + titleSafe.X, 380));
 
@@ -63,10 +57,10 @@ namespace MonkeyMadness
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            DrawShadowedString(spriteBatch, _font, "Game Over", new Vector2(_screenRect.Width / 2 - _font.MeasureString("Game Over").X / 2, 100), Color.Red);
+            DrawShadowedString(spriteBatch, _font, Properties.Resources.strGameOver, new Vector2(_screenRect.Width / 2 - _font.MeasureString(Properties.Resources.strGameOver).X / 2, 100), Color.Red);
 
-            string s = "Points" + " " + (_cumulatedPoints + _points.Points);
-            string sHelper = "Points" + " ?????";
+            string s = Properties.Resources.strPoints + " " + (_cumulatedPoints + _points.Points);
+            string sHelper = Properties.Resources.strPoints + " ?????";
 
             DrawShadowedString(spriteBatch, _medium, s, new Vector2(_screenRect.Width / 2 - _medium.MeasureString(sHelper).X / 2, 200), Color.Red);
 
@@ -76,7 +70,6 @@ namespace MonkeyMadness
                 _buttonContinue.Draw(spriteBatch, _medium);
             }
         }
-
         private void DrawShadowedString(SpriteBatch spriteBatch, SpriteFont font, string value, Vector2 position, Color color)
         {
             spriteBatch.DrawString(font, value, position + new Vector2(1.0f, 1.0f), Color.Black);

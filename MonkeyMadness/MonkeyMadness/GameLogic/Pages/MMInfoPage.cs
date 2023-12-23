@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Globalization;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Globalization;
 
 #if WINDOWS_PHONE
 using Microsoft.Phone.Tasks;
 #endif
-
 
 namespace MonkeyMadness
 {
@@ -33,10 +28,6 @@ namespace MonkeyMadness
 
         Game _gameMain;
 
-#if WINDOWS_PHONE
-        JJButton _rateButton;
-#endif
-
         String _version;
 
         public enum Result
@@ -50,20 +41,14 @@ namespace MonkeyMadness
              _screenRect = screenRect;
 
             //_emailLabel = new MMLinkLabel(gameMain, "Contact", "void@void.com", "Monkey Madness", Color.Gold, Color.Red, MMLinkLabel.Task.Email); ;
-
             // _howtoLabel = new MMLinkLabel(gameMain, "Howto", "Howtocontent" + "/monkey", "", Color.Gold, Color.Red, MMLinkLabel.Task.Webbrowser);
-
             // _soundjayLabel = new MMLinkLabel(gameMain, "Audio", "Audiolink", "", Color.Gold, Color.Red, MMLinkLabel.Task.Webbrowser);
 
-            _buttonExit = new MMButton(gameMain, "Back", false,false);
+            _buttonExit = new MMButton(gameMain, Properties.Resources.strBack, false,false);
 
             _gameMain = gameMain;
 
             int y = 420;
-                
-#if XBOX
-            y -= 20;
-#endif
 
             _buttonExit.CenterPosition(new Vector2(screenRect.Width / 2, y));
             _buttonExit.Hover = true;
@@ -78,12 +63,9 @@ namespace MonkeyMadness
 
 #if WINDOWS_PHONE
             _rateButton = new JJButton(gameMain, "", false, false);
-
             _rateButton.DefaultTexture = _rateButton.HoverTexture = _rateButton.PressedTexture = _rateButton.HoverPressedTexture = LoadLocalizedAsset<Texture2D>("buttons/rate_game");
-
             _rateButton.CenterPosition(new Vector2(700, 400));
 #endif
-
         }
 
         public void SetVersion(String s)
@@ -102,20 +84,20 @@ namespace MonkeyMadness
                 return Result.exit;
             }
 
-#if WINDOWS_PHONE
-            if (_rateButton.Update(mousePosition, mouseDown))
-            {
-                try
-                {
-                    MarketplaceReviewTask marketplaceReviewTask = new MarketplaceReviewTask();
-                    marketplaceReviewTask.Show();
-                }
-                catch (Exception e)
-                {
-                    Console.Write(e.Message);
-                }
-            }
-#endif
+//#if WINDOWS_PHONE
+//            if (_rateButton.Update(mousePosition, mouseDown))
+//            {
+//                try
+//                {
+//                    MarketplaceReviewTask marketplaceReviewTask = new MarketplaceReviewTask();
+//                    marketplaceReviewTask.Show();
+//                }
+//                catch (Exception e)
+//                {
+//                    Console.Write(e.Message);
+//                }
+//            }
+//#endif
 
             return Result.noresult;
         }
@@ -126,11 +108,7 @@ namespace MonkeyMadness
 
             Vector2 position = new Vector2(80, 20);
 
-#if XBOX
-            position.Y += 20;
-#endif
-
-            DrawShadowedString(spriteBatch, _largeFont, "Info", position, Color.Gold);
+            DrawShadowedString(spriteBatch, _largeFont, Properties.Resources.strInfoHeader, position, Color.Gold);
 
             int tabX = LargestLabel();            
 
@@ -138,46 +116,46 @@ namespace MonkeyMadness
             position.X = 50; 
             position.Y = 100;
 
-            DrawShadowedString(spriteBatch, _smallFont, "Contact", position, Color.LightBlue);
+            //DrawShadowedString(spriteBatch, _smallFont, "Contact", position, Color.LightBlue);
 
             position.X += tabX;            
 
             //_emailLabel.SetPosition(position);
             //_emailLabel.Draw(spriteBatch);
 
-#if WINDOWS_PHONE
-            _rateButton.Draw(spriteBatch, _font);
-#endif
+//#if WINDOWS_PHONE
+//            _rateButton.Draw(spriteBatch, _font);
+//#endif
 
             // hotwo label            
             position.X = 50; 
             position.Y = 140;
 
-            DrawShadowedString(spriteBatch, _smallFont, "Howto", position, Color.LightBlue);
+           // DrawShadowedString(spriteBatch, _smallFont, "Howto", position, Color.LightBlue);
 
             position.X += tabX;
 
-#if WINDOWS_PHONE
-            DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoTilt, position, Color.Gold);            
-#elif XBOX
-            DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoXBoxRun, position, Color.Gold);               
-#endif
-            position.Y = 170;
+//#if WINDOWS_PHONE
+//            DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoTilt, position, Color.Gold);            
+//#elif XBOX
+//            DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoXBoxRun, position, Color.Gold);               
+//#endif
+//            position.Y = 170;
 
-            DrawShadowedString(spriteBatch, _smallFont, "Leave", position, Color.Gold);
+//            DrawShadowedString(spriteBatch, _smallFont, "Leave", position, Color.Gold);
 
-            position.Y = 200;
+//            position.Y = 200;
 
-#if WINDOWS_PHONE
-            DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoTap, position, Color.Gold);
-#elif XBOX
-            DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoXboxJump, position, Color.Gold);            
-#endif
-            position.Y = 230;
+//#if WINDOWS_PHONE
+//            DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoTap, position, Color.Gold);
+//#elif XBOX
+//            DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoXboxJump, position, Color.Gold);            
+//#endif
+//            position.Y = 230;
 
-            DrawShadowedString(spriteBatch, _smallFont, "Hint", position, Color.Gold);            
+//            DrawShadowedString(spriteBatch, _smallFont, "Hint", position, Color.Gold);            
 
-            position.Y = 260;
+//            position.Y = 260;
 
             //DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoHowtoContent, position, Color.Gold);
 
@@ -189,9 +167,11 @@ namespace MonkeyMadness
             //s = Resource1.strInfoGraphicsLabel + Resource1.strInfoGraphicsContent;            
 
             position.X = 50;
-            position.Y = 300;
+            position.Y = 150;
 
-            DrawShadowedString(spriteBatch, _smallFont, "Info", position, Color.LightBlue);
+            
+
+            DrawShadowedString(spriteBatch, _smallFont, Properties.Resources.strInfoVersion, position, Color.LightBlue);
 
             position.X += tabX;
 
@@ -202,7 +182,7 @@ namespace MonkeyMadness
             position.X = 50;
             position.Y = 340;
 
-            DrawShadowedString(spriteBatch, _smallFont, "Audio", position, Color.LightBlue);
+            //DrawShadowedString(spriteBatch, _smallFont, "Audio", position, Color.LightBlue);
 
             position.X += tabX;
 
@@ -218,12 +198,12 @@ namespace MonkeyMadness
         {
             int max = 0;
             
-            max = Math.Max(max, (int)_smallFont.MeasureString("Contact").X);
-            max = Math.Max(max, (int)_smallFont.MeasureString("Contact").X);
-            max = Math.Max(max, (int)_smallFont.MeasureString("Contact").X);
-            max = Math.Max(max, (int)_smallFont.MeasureString("Contact").X);
+            max = Math.Max(max, (int)_smallFont.MeasureString(Properties.Resources.strInfoVersion).X);
+            //max = Math.Max(max, (int)_smallFont.MeasureString("Contact").X);
+            //max = Math.Max(max, (int)_smallFont.MeasureString("Contact").X);
+            // max = Math.Max(max, (int)_smallFont.MeasureString("Contact").X);
 
-            return max;
+            return max + 10;
         }
 
         private void DrawShadowedString(SpriteBatch spriteBatch, SpriteFont font, string value, Vector2 position, Color color)

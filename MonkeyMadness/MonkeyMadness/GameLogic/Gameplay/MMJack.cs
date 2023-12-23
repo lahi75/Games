@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Audio;
+using System;
 
 namespace MonkeyMadness
 {
@@ -41,7 +37,7 @@ namespace MonkeyMadness
 
             _hint = gameMain.Content.Load<Texture2D>("misc/hole");
 
-            _bonus = new JJJackBonus(gameMain);                                   
+            _bonus = new MMJackBonus(gameMain);                                   
         }        
 
         public void Init(Rectangle screenRect, Rectangle titleSafe, Int32 maxLine, Int32 gameSpeed, Int32 offset, float delta, int fallStunTime, int monsterStunTime)
@@ -56,14 +52,9 @@ namespace MonkeyMadness
 
             _maxLines = _currentLine = maxLine;
 
-            //_position = new Vector2(0, maxLine * delta + _jackHeight);
-            
+            //_position = new Vector2(0, maxLine * delta + _jackHeight);           
 
-#if XBOX
-           // _position.Y -= 8;
-#endif
-
-            _lives = 4;
+            _lives = 3;
 
             _delta = delta;
             _offset = offset;
@@ -78,14 +69,6 @@ namespace MonkeyMadness
         {            
             //_position = new Vector2(_screenRect.Width/ 2, _screenRect.Height - _jackHeight);
             _position = new Vector2(_screenRect.Width / 2, _maxLines * _delta - _offset - _jackHeight + _delta);//_maxLines * _delta - _offset + _jackHeight + 5);
-
-
-            
-
-
-#if XBOX
-           // _position.Y -= 8;
-#endif
 
             _currentLine = _maxLines;
             _currentState = States.idle;
@@ -129,11 +112,8 @@ namespace MonkeyMadness
             }
 
             _bonus.Draw(spriteBatch, _position);
-
             
-
-            //_bonus.Debug();
-            
+            //_bonus.Debug();            
         }
 
         public Int32 Lives
@@ -277,7 +257,6 @@ namespace MonkeyMadness
                     _lives--;
 
                     MMFxManager.Fx.PlayLostLive();
-
                     MonitorManager.Monitor.ResetMonsterCrash();
                 }
             }
@@ -382,13 +361,6 @@ namespace MonkeyMadness
                         {
                             _position.Y = linePos - _jackHeight + _delta;
 
-#if XBOX
-                      //  if( _currentLine == _maxLines )
-                      //      _position.Y -= 8;
-#endif
-
-
-
                             if (_bonus.CanParachute)
                                 _newState = States.idle;
                             else
@@ -411,7 +383,6 @@ namespace MonkeyMadness
                         _position.X = _titleSafe.X + _titleSafe.Width - _jackWidth / 2;
                     
                     _newState = States.idle;
-
                     
                     _run.UpdateFrame(elapsed);
 
@@ -465,7 +436,7 @@ namespace MonkeyMadness
             headcrash
         }
 
-        public JJJackBonus Bonus
+        public MMJackBonus Bonus
         {
             get
             {
@@ -507,7 +478,7 @@ namespace MonkeyMadness
         TimeSpan _stunnedBegin;
         Int32 _lives;       
 
-        JJJackBonus _bonus;
+        MMJackBonus _bonus;
         SpriteEffects _direction = SpriteEffects.None;
     }
 }

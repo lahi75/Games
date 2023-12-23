@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
 
 namespace MonkeyMadness
 {
@@ -73,8 +67,8 @@ namespace MonkeyMadness
 
         public void PlayMonkeyScream()
         {
-            //if (SettingsManager.Settings.Fx == false)
-            //    return;
+            if (SettingsManager.Settings.Fx == false)
+                return;
 
             _screamInstance.Volume = 0.3f;
             _screamInstance.Play();
@@ -82,64 +76,64 @@ namespace MonkeyMadness
 
         public void PlayLevelSuccess()
         {
-           // if (SettingsManager.Settings.Fx == false)
-           //     return;
+            if (SettingsManager.Settings.Fx == false)
+                return;
 
             _levelInstance.Play();
         }
 
         public void PlayCrashScream()
         {
-            //if (SettingsManager.Settings.Fx == false)
-            //    return;
+            if (SettingsManager.Settings.Fx == false)
+                return;
 
             _crashScreamInstance.Play();
         }
 
         public void PlayTeleport()
         {
-          // if (SettingsManager.Settings.Fx == false)
-          //      return;
+           if (SettingsManager.Settings.Fx == false)
+                return;
             
             _teleportInstance.Play();
         }
 
         public void PlayBonusCollect()
         {
-           // if (SettingsManager.Settings.Fx == false)
-           //     return;
+            if (SettingsManager.Settings.Fx == false)
+                return;
 
             _bonusInstance.Play();
         }
 
         public void PlaySnakeCrash()
         {
-           // if (SettingsManager.Settings.Fx == false)
-            //    return;
+            if (SettingsManager.Settings.Fx == false)
+                return;
 
             _snakeCrashInstance.Play();
         }
 
         public void PlayVultureCrash()
         {
-            //if (SettingsManager.Settings.Fx == false)
-                //return;
+            if (SettingsManager.Settings.Fx == false)
+                return;
 
             _vultureCrashInstance.Play();
         }
 
         public void PlayGhostCrash()
         {
-           // if (SettingsManager.Settings.Fx == false)
-           //     return;
+            if (SettingsManager.Settings.Fx == false)
+                return;
 
             _ghostCrashInstance.Play();
         }
 
         public void PlayBirdScream(bool play)
         {
-          //  if (SettingsManager.Settings.Fx == false)
-          //      return;
+            if (SettingsManager.Settings.Fx == false)
+                return;
 
             if (play)
             {
@@ -155,8 +149,8 @@ namespace MonkeyMadness
 
         public void PlayPointsNoise(bool play)
         {
-           // if (SettingsManager.Settings.Fx == false)
-           //     return;
+            if (SettingsManager.Settings.Fx == false)
+                return;
 
             if (play)
             {
@@ -175,24 +169,24 @@ namespace MonkeyMadness
 
         public void PlayAwardNoise()
         {
-         //   if (SettingsManager.Settings.Fx == false)
-         //       return;
+            if (SettingsManager.Settings.Fx == false)
+                return;
 
             _archievementInstance.Play();            
         }
 
         public void PlayGameOver()
         {
-          //  if (SettingsManager.Settings.Fx == false)
-          //      return;
+            if (SettingsManager.Settings.Fx == false)
+                return;
 
             _gameOverInstance.Play();
         }
 
         public void PlayLostLive()
         {
-            //if (SettingsManager.Settings.Fx == false)
-//                return;
+            if (SettingsManager.Settings.Fx == false)
+                return;
 
            _lostLiveInstance.Play();
         }

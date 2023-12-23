@@ -387,8 +387,8 @@ namespace MonkeyMadness
         }      
 
         public void Draw()
-        {            
-
+        {
+            
             _spriteBatch.Begin();
 
             switch (_currentState)

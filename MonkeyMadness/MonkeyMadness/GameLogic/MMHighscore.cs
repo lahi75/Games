@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.IO;
 using System.Net;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace MonkeyMadness
 {
@@ -105,7 +103,7 @@ namespace MonkeyMadness
         {
             string highscoreString = name + info + score + country + "if(x=10){_last++;}";
             string postString = "ModeID=" + modeid + "&Name=" + name + "&Info=" + info + "&Score=" + score + "&Country=" + country +"&Hash=" + HashString(highscoreString);
-            string response = null;
+            //string response = null;
 
             //response = WebPost(Resource1.strHighScoreSendURL, postString);
 
@@ -115,29 +113,29 @@ namespace MonkeyMadness
         private string WebPost(string _URI, string postString)
         {            
 #if WINDOWS || WINDOWS_PHONE 
-            try
-            {
-                const string REQUEST_METHOD_POST = "POST";
-                const string CONTENT_TYPE = "application/x-www-form-urlencoded";
+            //try
+            //{
+            //    const string REQUEST_METHOD_POST = "POST";
+            //    const string CONTENT_TYPE = "application/x-www-form-urlencoded";
 
-                // Create a request using a URL that can receive a post.
-                WebRequest request = WebRequest.Create(_URI);
+            //    // Create a request using a URL that can receive a post.
+            //    WebRequest request = WebRequest.Create(_URI);
 
-                // Set the Method property of the request to POST.
-                request.Method = REQUEST_METHOD_POST;
+            //    // Set the Method property of the request to POST.
+            //    request.Method = REQUEST_METHOD_POST;
 
-                // Set the ContentType property of the WebRequest.
-                request.ContentType = CONTENT_TYPE;
+            //    // Set the ContentType property of the WebRequest.
+            //    request.ContentType = CONTENT_TYPE;
 
-                // Set the ContentLength property of the WebRequest.
-                //    request.ContentLength = byteArray.Length;
+            //    // Set the ContentLength property of the WebRequest.
+            //    //    request.ContentLength = byteArray.Length;
 
-                // Get the request stream.
-                request.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), new Object[] { request, postString });
-            }
-            catch
-            {
-            }
+            //    // Get the request stream.
+            //    request.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), new Object[] { request, postString });
+            //}
+            //catch
+            //{
+            //}
 #endif
 
             return null;           
@@ -263,17 +261,17 @@ namespace MonkeyMadness
         {
             string ret = "";
 
-#if WINDOWS || WINDOWS_PHONE 
-            System.Security.Cryptography.SHA1Managed x = new System.Security.Cryptography.SHA1Managed();
-            byte[] data = System.Text.Encoding.UTF8.GetBytes(value);
+//#if WINDOWS || WINDOWS_PHONE 
+//            System.Security.Cryptography.SHA1Managed x = new System.Security.Cryptography.SHA1Managed();
+//            byte[] data = System.Text.Encoding.UTF8.GetBytes(value);
             
-            data = x.ComputeHash(data);
+//            data = x.ComputeHash(data);
             
       
 
-            for (int i = 0; i < data.Length; i++) 
-                ret += data[i].ToString("x2").ToLower();
-#endif
+//            for (int i = 0; i < data.Length; i++) 
+//                ret += data[i].ToString("x2").ToLower();
+//#endif
             return ret;
         }
     }    

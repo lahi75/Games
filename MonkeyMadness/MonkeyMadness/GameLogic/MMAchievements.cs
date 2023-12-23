@@ -5,6 +5,8 @@ using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using SharpDX.DXGI;
+using static MonkeyMadness.MMAchievement;
 
 namespace MonkeyMadness
 {
@@ -257,34 +259,34 @@ namespace MonkeyMadness
             {
                 switch (_achievment)
                 {
-                                  
                     default:
                     case Achievement.DrillerKiller:
-                        return "Driller Killer";
+                        return Properties.Resources.AchievementDrillerKiller;
                     case Achievement.GhostBuster:
-                        return "Ghost Buster";
+                        return Properties.Resources.AchievementGhostBuster;
                     case Achievement.Newbie:
-                        return "Newbie";
+                        return Properties.Resources.AchievementNewbie;
                     case Achievement.SpeedyGonzales:
-                        return "Speedy Gonzales";
+                        return Properties.Resources.AchievementSpeedyGonzales;
                     case Achievement.LuckyDevil:
-                        return "Lucky Devil";
+                        return Properties.Resources.AchievmentLuckyDevil;
                     case Achievement.Tumbler:
-                        return "Tumbler";
+                        return Properties.Resources.AchievementTumbler;
                     case Achievement.Lefty:
-                        return "Lefty";
+                        return Properties.Resources.AchievementLefty;
                     case Achievement.Pleasant:
-                        return "Pleasant";
+                        return Properties.Resources.AchievmentPleasantJourney;
                     case Achievement.Icarus:
-                        return "Icarus";
+                        return Properties.Resources.AchievementIcarus;
                     case Achievement.Cheater:
-                        return "Cheater";
+                        return Properties.Resources.AchievementCheater;
                     case Achievement.Stalker:
-                        return "Stalker";
+                        return Properties.Resources.AchievementStalker;
                     case Achievement.Super:
-                        return "Super";                
+                        return Properties.Resources.AchievementSuper;
                 }
             }
+
         }
 
         [XmlIgnoreAttribute]
@@ -292,36 +294,37 @@ namespace MonkeyMadness
         { 
             get
             {
-                switch (_achievment)
-                {
-                    default:
-                    case Achievement.DrillerKiller:
-                        return "Driller Killer";
-                    case Achievement.GhostBuster:
-                        return "Ghost Buster";
-                    case Achievement.Newbie:
-                        return "Newbie";
-                    case Achievement.SpeedyGonzales:
-                        return "Speedy Gonzales";
-                    case Achievement.LuckyDevil:
-                        return "Lucky Devil";
-                    case Achievement.Tumbler:
-                        return "Tumbler";
-                    case Achievement.Lefty:
-                        return "Lefty";
-                    case Achievement.Pleasant:
-                        return "Pleasant";
-                    case Achievement.Icarus:
-                        return "Icarus";
-                    case Achievement.Cheater:
-                        return "Cheater";
-                    case Achievement.Stalker:
-                        return "Stalker";
-                    case Achievement.Super:
-                        return "Super";
-                }
+            switch (_achievment)
+            {
+                default:
+                case Achievement.DrillerKiller:
+                    return Properties.Resources.AchievementDrillerKillerDescription;
+                case Achievement.GhostBuster:
+                    return Properties.Resources.AchievementGhostBusterDescription;
+                case Achievement.Newbie:
+                    return Properties.Resources.AchievementNewbieDescription;
+                case Achievement.SpeedyGonzales:
+                    return Properties.Resources.AchievementSpeedyGonzalesDescription;
+                case Achievement.LuckyDevil:
+                    return Properties.Resources.AchievementLuckyDevilDescription;
+                case Achievement.Tumbler:
+                    return Properties.Resources.AchievementTumblerDescription;
+                case Achievement.Lefty:
+                    return Properties.Resources.AchievementLeftyDescription;
+                case Achievement.Pleasant:
+                    return Properties.Resources.AchievmentPleasantJourneyDescription;
+                case Achievement.Icarus:
+                    return Properties.Resources.AchievementIcarusDescription;
+                case Achievement.Cheater:
+                    return Properties.Resources.AchievementCheaterDescription;
+                case Achievement.Stalker:
+                    return Properties.Resources.AchievementStalkerDescription;
+                case Achievement.Super:
+                    return Properties.Resources.AchievementSuperDescription;
             }
+
         }
+    }
 
         public bool IsUnlocked { get; set; }
 
@@ -481,10 +484,6 @@ namespace MonkeyMadness
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {            
-#if XBOX
-            position.Y -= 8;
-#endif
-
             foreach (MMAchievement a in _achievements)
             {
                 if( a.Draw(spriteBatch, position, false) )

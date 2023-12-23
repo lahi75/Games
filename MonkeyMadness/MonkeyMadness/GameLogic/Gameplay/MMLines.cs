@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace MonkeyMadness
 {
     /// <summary>
     /// class handling the lines of the game
     /// </summary>
-    class JJLines
+    class MMLines
     {
         /// <summary>
         /// Ctor
         /// </summary>        
-        public JJLines(Game gameMain)
+        public MMLines(Game gameMain)
         {
             _line = gameMain.Content.Load<Texture2D>("misc/line");            
         }        
@@ -57,10 +54,6 @@ namespace MonkeyMadness
 #if WINDOWS_PHONE
                 o -= 80;
 #endif
-
-#if XBOX
-                o -= 60;
-#endif
                 return o;
             }            
         }
@@ -74,10 +67,6 @@ namespace MonkeyMadness
             {
                 // calculate the delta between two lines to distribute them evenly
                 float d = (_screenRect.Height + LinesOffset) / (float)(_maxLines + 1);
-
-#if XBOX
-                d -= 7;
-#endif
 
                 return d;
             }

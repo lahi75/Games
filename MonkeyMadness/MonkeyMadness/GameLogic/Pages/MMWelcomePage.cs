@@ -20,12 +20,11 @@ namespace MonkeyMadness
         MMButton _buttonPlay;
         MMButton _buttonOptions;
         MMButton _buttonInfo;
-        //JJButton _buttonExit;
+        //MMButton _buttonExit;
         MMButton _buttonHighscore;
         MMButton _buttonAchievements;
 
         //MMButton _buttonMore;
-
         //JJNewsTicker _newsTicker;
 
         int _currentSecond = 0;
@@ -59,28 +58,24 @@ namespace MonkeyMadness
         {
             _gameMain = gameMain;
 
-            _buttonPlay = new MMButton(gameMain, "Play", false,false);
-            _buttonOptions = new MMButton(gameMain, "Options", false, false);
-            _buttonInfo = new MMButton(gameMain, "Info", false, false);            
-            _buttonHighscore = new MMButton(gameMain, "Highscore", false, false);
-            _buttonAchievements = new MMButton(gameMain, "Awards", false, false);
+            _buttonPlay = new MMButton(gameMain, Properties.Resources.strPlay, false,false);
+            _buttonOptions = new MMButton(gameMain, Properties.Resources.strOptions, false, false);
+            _buttonInfo = new MMButton(gameMain, Properties.Resources.strInfo, false, false);            
+            _buttonHighscore = new MMButton(gameMain, Properties.Resources.strHighScore, false, false);
+            _buttonAchievements = new MMButton(gameMain, Properties.Resources.strAward, false, false);
 
-            _buttonPlay.CenterPosition(new Vector2(titleSafe.Width / 2 + titleSafe.X, 110));
-            _buttonOptions.CenterPosition(new Vector2(titleSafe.Width / 2 + titleSafe.X, 190));
-            _buttonInfo.CenterPosition(new Vector2(titleSafe.Width / 2 + titleSafe.X, 270));
-            _buttonHighscore.CenterPosition(new Vector2(titleSafe.Width / 2 + titleSafe.X, 350));
-            _buttonAchievements.CenterPosition(new Vector2(titleSafe.Width / 2 + titleSafe.X, 430));
+            _buttonPlay.CenterPosition(new Vector2(titleSafe.Width / 2 + titleSafe.X, 80));
+            _buttonOptions.CenterPosition(new Vector2(titleSafe.Width / 2 + titleSafe.X, 160));
+            _buttonInfo.CenterPosition(new Vector2(titleSafe.Width / 2 + titleSafe.X, 240));
+            _buttonHighscore.CenterPosition(new Vector2(titleSafe.Width / 2 + titleSafe.X, 320));
+            _buttonAchievements.CenterPosition(new Vector2(titleSafe.Width / 2 + titleSafe.X, 400));
 
             //_buttonMore = new JJButton(gameMain, "", false, false);
-
             //_buttonMore.DefaultTexture = _buttonMore.HoverTexture = _buttonMore.PressedTexture = _buttonMore.HoverPressedTexture = LoadLocalizedAsset<Texture2D>("buttons/more_games");
-
             //_buttonMore.CenterPosition(new Vector2(titleSafe.Width / 2 + titleSafe.X + 250, 320));
 
             _buttonPlay.Hover = true;
-
             
-
             _smallFont = gameMain.Content.Load<SpriteFont>("fonts/smallFont");
             _font = gameMain.Content.Load<SpriteFont>("fonts/ButtonFont");
             _background = gameMain.Content.Load<Texture2D>("background/form_main");
@@ -95,12 +90,9 @@ namespace MonkeyMadness
             //_newsTicker = new JJNewsTicker(gameMain.Content, new Point(0, 0), language);
 
             _screenRect = screenRect;
-
             _largeFont = gameMain.Content.Load<SpriteFont>("fonts/largeFont");                        
         }
-               
-        
-
+                       
         public WelcomeResult Update(GameTime game, Point mousePosition, bool mouseDown)
         {            
             if (_buttonPlay.Update(mousePosition, mouseDown))
@@ -214,7 +206,6 @@ namespace MonkeyMadness
             spriteBatch.DrawString(font, value, position + new Vector2(1.0f, 1.0f), Color.Black);
             spriteBatch.DrawString(font, value, position, color);
         }
-
 
         public void Up()
         {

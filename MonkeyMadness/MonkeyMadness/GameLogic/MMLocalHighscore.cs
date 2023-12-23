@@ -1,10 +1,7 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Xml.Serialization;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
 namespace MonkeyMadness
 {
@@ -84,7 +81,6 @@ namespace MonkeyMadness
             }
         }
 
-
         public MMLocalHighscore()
         {
         }
@@ -96,7 +92,6 @@ namespace MonkeyMadness
             _highscoreHard = serializedObject._highscoreHard;
         }
     }
-
 
     #region settings manager
 

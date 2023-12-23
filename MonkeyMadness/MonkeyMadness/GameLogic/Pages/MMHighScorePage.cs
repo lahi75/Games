@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace MonkeyMadness
 {
@@ -67,11 +63,6 @@ namespace MonkeyMadness
 
             int y = 440;
 
-#if XBOX
-            y -= 30;
-#endif
-
-
             _buttonExit = new MMButton(gameMain, "Back", false,false);
             _buttonExit.CenterPosition(new Vector2(screenRect.Width / 2, y));
 
@@ -89,20 +80,20 @@ namespace MonkeyMadness
 
         private void UpdateHighscore()
         {
-            string mode = "1";
+            //string mode = "1";
 
-            switch (Difficulty)
-            {
-                case MMSettings.DifficultyType.easy:
-                    mode = "1";
-                    break;
-                case MMSettings.DifficultyType.medium:
-                    mode = "2";
-                    break;
-                case MMSettings.DifficultyType.hard:
-                    mode = "3";
-                    break;
-            }
+            //switch (Difficulty)
+            //{
+            //    case MMSettings.DifficultyType.easy:
+            //        mode = "1";
+            //        break;
+            //    case MMSettings.DifficultyType.medium:
+            //        mode = "2";
+            //        break;
+            //    case MMSettings.DifficultyType.hard:
+            //        mode = "3";
+            //        break;
+            //}
 
             //_weekhighscore.GetScores(mode, "TOP10WEEK");
             //_allhighscore.GetScores(mode, "TOP10ALL");           
@@ -155,10 +146,6 @@ namespace MonkeyMadness
 
             Vector2 position = new Vector2(50, 20);
 
-#if XBOX
-            position.Y += 20;
-#endif
-
             // draw page caption
             DrawShadowedString(spriteBatch, _largeFont, "Highscore", position, Color.Gold);            
 
@@ -167,31 +154,22 @@ namespace MonkeyMadness
             _buttonHard.Draw(spriteBatch, _font);
             
             // Draw table headers 
-            position.X = 20;
-#if XBOX 
-            position.X += 100;
-#endif
-
-            position.Y = 170;
-            DrawShadowedString(spriteBatch, _smallFont, "Local", position, Color.LightBlue);
-
-#if WINDOWS_PHONE || WINDOWS
-
             position.X = 280;
-            DrawShadowedString(spriteBatch, _smallFont, "Week", position, Color.LightBlue);
 
-            position.X = 540;
-            DrawShadowedString(spriteBatch, _smallFont, "Total", position, Color.LightBlue);
+            position.Y = 180;
+            //DrawShadowedString(spriteBatch, _smallFont, "Local", position, Color.LightBlue);
 
-            position.X = 20;
-            position.Y = 200;
-#endif
+//#if WINDOWS_PHONE || WINDOWS
 
-#if XBOX 
-            position.X = 20;
-            position.X += 100;
-            position.Y = 200;
-#endif
+//            position.X = 280;
+//            DrawShadowedString(spriteBatch, _smallFont, "Week", position, Color.LightBlue);
+
+//            position.X = 540;
+//            DrawShadowedString(spriteBatch, _smallFont, "Total", position, Color.LightBlue);
+
+//            position.X = 20;
+//            position.Y = 200;
+//#endif
 
             // draw tables
             DrawTable(spriteBatch, LocalHighscoreManager.Highscore.GetScores(Difficulty), position);
@@ -239,12 +217,12 @@ namespace MonkeyMadness
 
 
                     // draw icon somewhere
-                    if (scores[i].Info == "2")
-                        spriteBatch.Draw(_wp7logo, new Vector2(p.X + 65, p.Y), Color.White);
-                    else if (scores[i].Info == "4")
-                        spriteBatch.Draw(_androidlogo, new Vector2(p.X + 65, p.Y), Color.White);
-                    else if (scores[i].Info == "1")
-                        spriteBatch.Draw(_w7logo, new Vector2(p.X + 65, p.Y), Color.White);                  
+                    //if (scores[i].Info == "2")
+                    //    spriteBatch.Draw(_wp7logo, new Vector2(p.X + 65, p.Y), Color.White);
+                    //else if (scores[i].Info == "4")
+                    //    spriteBatch.Draw(_androidlogo, new Vector2(p.X + 65, p.Y), Color.White);
+                    //else if (scores[i].Info == "1")
+                    //    spriteBatch.Draw(_w7logo, new Vector2(p.X + 65, p.Y), Color.White);                  
 
                     String helper = "00000";
 

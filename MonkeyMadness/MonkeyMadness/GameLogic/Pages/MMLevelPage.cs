@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Audio;
+using System;
 
 
 namespace MonkeyMadness
@@ -37,16 +32,13 @@ namespace MonkeyMadness
 
         public MMLevelPage(Game gameMain, Rectangle screenRect, Rectangle titleSafe)
         {
-            _buttonContinue = new MMButton(gameMain, "Go", false, false);
+            _buttonContinue = new MMButton(gameMain, Properties.Resources.strLevelGo, false, false);
 
             _buttonContinue.CenterPosition(new Vector2(titleSafe.Width / 2 + titleSafe.X, 360));
 
             _font = gameMain.Content.Load<SpriteFont>("fonts/largeFont");
-
             _medium = gameMain.Content.Load<SpriteFont>("fonts/mediumFont");
-
          //   _background = gameMain.Content.Load<Texture2D>("info_background");
-
             _screenRect = screenRect;
             _titleSafe = titleSafe;
             Reset(1);            
@@ -120,23 +112,22 @@ namespace MonkeyMadness
             {
                 _bonusPoints = 0;
 
-                DrawShadowedString(spriteBatch, _medium, "More Levels", new Vector2(_screenRect.Width / 2 - _medium.MeasureString("More Levels").X / 2, 90), Color.Red);
-                DrawShadowedString(spriteBatch, _medium, "More Monsters", new Vector2(_screenRect.Width / 2 - _medium.MeasureString("More Monsters").X / 2, 140), Color.Red);
-                DrawShadowedString(spriteBatch, _medium, "Zero Ads", new Vector2(_screenRect.Width / 2 - _medium.MeasureString("Zero Ads").X / 2, 190), Color.Red);
-
-                DrawShadowedString(spriteBatch, _medium, "Buy Monkey Madness on Marketplace", new Vector2(_screenRect.Width / 2 - _medium.MeasureString("Buy Monkey Madness on Marketplace").X / 2, 270), Color.Red);                
+                //DrawShadowedString(spriteBatch, _medium, "More Levels", new Vector2(_screenRect.Width / 2 - _medium.MeasureString("More Levels").X / 2, 90), Color.Red);
+                //DrawShadowedString(spriteBatch, _medium, "More Monsters", new Vector2(_screenRect.Width / 2 - _medium.MeasureString("More Monsters").X / 2, 140), Color.Red);
+                //DrawShadowedString(spriteBatch, _medium, "Zero Ads", new Vector2(_screenRect.Width / 2 - _medium.MeasureString("Zero Ads").X / 2, 190), Color.Red);
+                //DrawShadowedString(spriteBatch, _medium, "Buy Monkey Madness on Marketplace", new Vector2(_screenRect.Width / 2 - _medium.MeasureString("Buy Monkey Madness on Marketplace").X / 2, 270), Color.Red);                
             }
             else
             {
                 int x = 100;
 
-                String s = "Congratulations";
+                String s = Properties.Resources.strConcrats;
 
                 DrawShadowedString(spriteBatch, _font, s, new Vector2(_screenRect.Width / 2 - _font.MeasureString(s).X / 2, x), Color.Red);
 
                 x += 80;
 
-                s = "Level" + " " + _level;
+                s = Properties.Resources.strLevel + " " + _level;
 
                 DrawShadowedString(spriteBatch, _medium, s, new Vector2(_screenRect.Width / 2 - _medium.MeasureString(s).X / 2, x), Color.Red);
 
@@ -149,17 +140,17 @@ namespace MonkeyMadness
                     t = _levelTime.Minutes.ToString("00") + ":";
                 
                 t += _levelTime.Seconds.ToString("00");
-
-                s =  "Time" + " " + t;
+                
+                s = Properties.Resources.strTime + " " + t;
 
                 DrawShadowedString(spriteBatch, _medium, s, new Vector2(_screenRect.Width / 2 - _medium.MeasureString(s).X / 2, x), Color.Red);
 
                 x += 40;
 
-                s = "Points" + " " + (_cumulatedPoints + _points.Points);
-                String sHelper = "Points " + " ????";
+                s = Properties.Resources.strPoints + " " + (_cumulatedPoints + _points.Points);
+                String sHelper = Properties.Resources.strPoints + " ????";
 
-                DrawShadowedString(spriteBatch, _medium, s, new Vector2((int)(_screenRect.Width / 2 - _medium.MeasureString(sHelper).X / 2), x), Color.Red);                
+                DrawShadowedString(spriteBatch, _medium, s, new Vector2((int)(_screenRect.Width / 2 - _medium.MeasureString(sHelper).X / 2), x), Color.Red);
             }
 
             if (_bonusPoints == 0)

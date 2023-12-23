@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using System;
 
 namespace MonkeyMadness
 {
@@ -101,7 +96,6 @@ namespace MonkeyMadness
             if (mousePosition.X != -1 && mousePosition.Y != -1)
                 _isHovered = pos.Contains(mousePosition);
 
-
             if (_checkButton)
             {
                 //checkbox button
@@ -145,9 +139,7 @@ namespace MonkeyMadness
                     return true;
                 }
             }
-
            
-
             return false;
         }
 
@@ -161,7 +153,6 @@ namespace MonkeyMadness
             Rectangle r = new Rectangle((int)_position.X, (int)_position.Y, (int)_textureDefault.Width, (int)_textureDefault.Height);
             return r;
         }
-
         public void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
 
@@ -193,8 +184,7 @@ namespace MonkeyMadness
 
 
             //spriteBatch.DrawString(font, _text, textPos + new Vector2(1.0f, 1.0f), Color.DarkGray);
-            spriteBatch.DrawString(font, _text, textPos, Color.WhiteSmoke);
-            
+            spriteBatch.DrawString(font, _text, textPos, Color.WhiteSmoke);            
         }        
 
         private bool _isHovered = false;

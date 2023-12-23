@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MonkeyMadness
 {
-    class JJJackBonus
+    class MMJackBonus
     {
-        public JJJackBonus(Game gameMain)
+        public MMJackBonus(Game gameMain)
         {
             _bonuses.Add(MMBonus.BonusType.Amor, 0);
             _bonuses.Add(MMBonus.BonusType.Drill, 0);

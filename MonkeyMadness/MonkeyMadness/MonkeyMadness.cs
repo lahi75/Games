@@ -1,12 +1,8 @@
-﻿using Microsoft.VisualBasic.Devices;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using SharpDX.Direct3D9;
-
-//using SharpDX.Direct2D1;
-//using System.Drawing;
 using System;
+
 
 namespace MonkeyMadness
 {
@@ -24,10 +20,10 @@ namespace MonkeyMadness
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            //_graphics.PreferredBackBufferWidth = 1280;
-            //_graphics.PreferredBackBufferHeight = 720;
-            //_graphics.IsFullScreen = true;
-            _graphics.ApplyChanges();
+            _graphics.PreferredBackBufferWidth = 800;
+            _graphics.PreferredBackBufferHeight = 480;
+            _graphics.IsFullScreen = false;
+            _graphics.ApplyChanges();            
         }
 
         protected override void Initialize()
@@ -38,7 +34,7 @@ namespace MonkeyMadness
 
             string s = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
-            string v;
+            //string v;
             //var assembly = System.Reflection.Assembly.GetExecutingAssembly().FullName;
             //v = assembly.Split('=')[1].Split(',')[0];
             //s = s.Remove(s.LastIndexOf('.'));
@@ -54,7 +50,7 @@ namespace MonkeyMadness
             _game = new MMGameMain(this, r, GraphicsDevice.Viewport.TitleSafeArea);
             this.IsMouseVisible = false;
 
-            _mouse = new MMMouse(new Vector2(0, 0), this.Content.Load<Texture2D>("cursor"));
+            _mouse = new MMMouse(new Vector2(0, 0), this.Content.Load<Microsoft.Xna.Framework.Graphics.Texture2D>("cursor"));
         }
         protected override void Update(GameTime gameTime)
         {
@@ -99,7 +95,10 @@ namespace MonkeyMadness
                 _game.Start();
 
             if (keyState.IsKeyDown(Keys.Escape))
-                _game.Back(time);
+            {
+                if( _game.Back(time) == true)
+                    Exit(); // exit game when on welcome page
+            }
         }
 
 
@@ -107,19 +106,18 @@ namespace MonkeyMadness
         {
             GraphicsDevice.Clear(Color.White);
 
+           // Resolution.BeginDraw();
+            
             _game.Draw();
 
             if (_game.ShowMouseCursor)
             {
-                SpriteBatch batch = new SpriteBatch(this.GraphicsDevice);
-
+                SpriteBatch batch = new SpriteBatch(this.GraphicsDevice);                
                 batch.Begin();
                 _mouse.Draw(batch);
                 batch.End();
             }
-
             base.Draw(gameTime);
-
         }
     }
 }

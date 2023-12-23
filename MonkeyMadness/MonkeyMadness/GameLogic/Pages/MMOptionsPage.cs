@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Audio;
-
-
+using System;
 
 namespace MonkeyMadness
 {
@@ -32,7 +26,6 @@ namespace MonkeyMadness
         SpriteFont _font;
 
         PlayerIndex _playerIndex = PlayerIndex.One;
-
         State _currentState = State.OptionsPage;
 
         public enum State
@@ -48,32 +41,28 @@ namespace MonkeyMadness
         }
 
         public MMOptionsPage(Game gameMain, Rectangle screenRect, Rectangle titleSafe)
-        {
-            _buttonExit = new MMButton(gameMain, "Back", false,false);
-            _buttonMusic = new MMButton(gameMain, "Music", true, false);
-            _buttonFX = new MMButton(gameMain, "Fx", true, false);
-            _buttonEasy = new MMButton(gameMain, "Easy", true,true);
-            _buttonMedium = new MMButton(gameMain, "Medium", true,true);
-            _buttonHard = new MMButton(gameMain, "Hard", true,true);
-            _buttonEnterName = new MMButton(gameMain, "Enter Name", false, false);
+        {            
+            _buttonExit = new MMButton(gameMain, Properties.Resources.strBack, false,false);
+            _buttonMusic = new MMButton(gameMain, Properties.Resources.strMusic, true, false);
+            _buttonFX = new MMButton(gameMain, Properties.Resources.strFX, true, false);
+            _buttonEasy = new MMButton(gameMain, Properties.Resources.strEasy, true,true);
+            _buttonMedium = new MMButton(gameMain, Properties.Resources.strMedium, true,true);
+            _buttonHard = new MMButton(gameMain, Properties.Resources.strHard, true,true);
+            _buttonEnterName = new MMButton(gameMain, Properties.Resources.strEnterUserName, false, false);
 
             int y = 420;
-
-#if XBOX
-            y -= 20;
-#endif
 
             _buttonExit.CenterPosition(new Vector2(screenRect.Width / 2, y));
             _buttonExit.Hover = true;
 
-            _buttonMusic.CenterPosition(new Vector2(320, 230));
-            _buttonFX.CenterPosition(new Vector2(510, 230));
+            _buttonMusic.CenterPosition(new Vector2(300, 230));
+            _buttonFX.CenterPosition(new Vector2(490, 230));
 
-            _buttonEasy.CenterPosition(new Vector2(320, 140));
-            _buttonMedium.CenterPosition(new Vector2(510, 140));
-            _buttonHard.CenterPosition(new Vector2(700, 140));
+            _buttonEasy.CenterPosition(new Vector2(300, 140));
+            _buttonMedium.CenterPosition(new Vector2(490, 140));
+            _buttonHard.CenterPosition(new Vector2(680, 140));
 
-            _buttonEnterName.CenterPosition(new Vector2(320 , 320));
+            _buttonEnterName.CenterPosition(new Vector2(300 , 320));
 
             _font = gameMain.Content.Load<SpriteFont>("fonts/ButtonFont");
             _largeFont = gameMain.Content.Load<SpriteFont>("fonts/largeFont");
@@ -84,13 +73,10 @@ namespace MonkeyMadness
 
             _screenRect = screenRect;
         }
-
         public Result Update(Point mousePosition, bool mouseDown)
-        {
-        
+        {        
             if (_buttonExit.Update(mousePosition, mouseDown))
                 return Result.exit;
-
 
             if (_buttonEasy.Update(mousePosition, mouseDown))
             {
@@ -136,7 +122,6 @@ namespace MonkeyMadness
 
                      
             _buttonMusic.Update(mousePosition, mouseDown);
-
             _buttonFX.Update(mousePosition, mouseDown);            
 
             return Result.noresult;
@@ -189,7 +174,6 @@ namespace MonkeyMadness
                 }                
             }
         }
-
         public Boolean Music
         {
             get
@@ -236,9 +220,7 @@ namespace MonkeyMadness
                 Unhover();
                 _buttonExit.Hover = true;
             }
-
         }
-
         public void Up()
         {
             if (_buttonEasy.Hover || _buttonMedium.Hover || _buttonHard.Hover)
@@ -262,7 +244,6 @@ namespace MonkeyMadness
                 _buttonEnterName.Hover = true;
             }
         }
-
         public void Unhover()
         {
             _buttonExit.Hover = false;
@@ -273,8 +254,6 @@ namespace MonkeyMadness
             _buttonFX.Hover = false;
             _buttonEnterName.Hover = false;
         }
-
-
         public void Left()
         {
             if (_buttonEasy.Hover )
@@ -303,7 +282,6 @@ namespace MonkeyMadness
                 _buttonFX.Hover = true;
             }
         }
-
         public void Right()
         {
             if (_buttonEasy.Hover)
@@ -332,30 +310,25 @@ namespace MonkeyMadness
                 _buttonFX.Hover = true;
             }
         }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_background, _screenRect, Color.White);   
 
             Vector2 position = new Vector2(50, 20);
 
-#if XBOX
-            position.Y += 20;
-#endif
-
             // draw page caption
-            DrawShadowedString(spriteBatch, _largeFont, "Options", position, Color.Gold);
+            DrawShadowedString(spriteBatch, _largeFont, Properties.Resources.strOptions, position, Color.Gold);
 
 
             // draw difficulty string
-            String s = "Difficulty";                 
-            position = new Vector2(10, 120);
+            String s = Properties.Resources.strOptionDifficulty;
+            position = new Vector2(30, 120);
             DrawShadowedString(spriteBatch, _mediumFont, s, position, Color.Gold);
                
             _buttonExit.Draw(spriteBatch, _font);
 
 
-            s = "Audio";
+            s = Properties.Resources.strOptionAudio;
 
             position.X = 30;
             position.Y = 210;
@@ -372,7 +345,7 @@ namespace MonkeyMadness
             position.X = 30;
             position.Y = 300;
 
-            s = "Name";
+            s = Properties.Resources.strOptionsUsername;
 
             DrawShadowedString(spriteBatch, _mediumFont, s, position, Color.Gold);
 

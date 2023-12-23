@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace MonkeyMadness
@@ -56,7 +55,7 @@ namespace MonkeyMadness
         /// </summary>        
         public void AddHole(Random r, bool start)
         {
-            JJHole hole = new JJHole(gameMain);
+            MMHole hole = new MMHole(gameMain);
 
             hole.Init(r, _screenRect, _titleSafe, _gameSpeed, _maxLines, _width, _offset, _delta, start);
 
@@ -72,7 +71,7 @@ namespace MonkeyMadness
         /// </summary>        
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (JJHole hole in _holes)
+            foreach (MMHole hole in _holes)
             {
                 hole.Draw(spriteBatch,_background);
             }
@@ -83,7 +82,7 @@ namespace MonkeyMadness
         /// </summary>
         public void Move()
         {
-            foreach (JJHole hole in _holes)
+            foreach (MMHole hole in _holes)
             {
                 hole.Move();
             }
@@ -110,7 +109,7 @@ namespace MonkeyMadness
 
         public Boolean TestHole(Int32 line, Int32 position, Boolean sameLine, out bool leftHole)
         {
-            foreach (JJHole hole in _holes)
+            foreach (MMHole hole in _holes)
             {
                 if (hole.TestHole(line, position, sameLine))
                 {
@@ -122,9 +121,9 @@ namespace MonkeyMadness
             return false;
         }
 
-        protected Boolean TestInterference(JJHole newHole)
+        protected Boolean TestInterference(MMHole newHole)
         {
-            foreach (JJHole hole in _holes)
+            foreach (MMHole hole in _holes)
             {
                 if (hole.Intersects(newHole))
                     return true;
@@ -132,7 +131,7 @@ namespace MonkeyMadness
             return false;
         }
 
-        List<JJHole> _holes = new List<JJHole>();
+        List<MMHole> _holes = new List<MMHole>();
         Game gameMain;        
         Rectangle _screenRect;
         Rectangle _titleSafe;

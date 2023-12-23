@@ -49,7 +49,7 @@ namespace MonkeyMadness
                 numbers.Add(i);
             
             // remove all monster numbers that are already there
-            foreach (JJMonster m in _monsters)            
+            foreach (MMMonster m in _monsters)            
                 numbers.Remove(m.Number);            
            
             int number;
@@ -77,7 +77,7 @@ namespace MonkeyMadness
                 vulture = true;
             }
 
-            JJMonster monster = new JJMonster(_gameMain,number, ghost,vulture);
+            MMMonster monster = new MMMonster(_gameMain,number, ghost,vulture);
 
             monster.Init(r, _screenRect, _titleSafe, _gameSpeed, _maxLines, _offset, _delta);
 
@@ -97,7 +97,7 @@ namespace MonkeyMadness
         /// </summary>        
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (JJMonster monster in _monsters)
+            foreach (MMMonster monster in _monsters)
             {
                 monster.Draw(spriteBatch);
             }
@@ -108,7 +108,7 @@ namespace MonkeyMadness
         /// </summary>
         public void Move(GameTime gameTime)
         {
-            foreach (JJMonster monster in _monsters)
+            foreach (MMMonster monster in _monsters)
             {
                 monster.Move(gameTime);
             }
@@ -138,7 +138,7 @@ namespace MonkeyMadness
         /// </summary>        
         public Boolean TestMonster(Int32 line, Int32 position)
         {
-            foreach (JJMonster monster in _monsters)
+            foreach (MMMonster monster in _monsters)
             {
                 if (monster.TestMonster(line,position))
                     return true;
@@ -150,9 +150,9 @@ namespace MonkeyMadness
         /// <summary>
         /// checks a monster sits on top of an other monster
         /// </summary>        
-        protected Boolean TestInterference(JJMonster newMonster)
+        protected Boolean TestInterference(MMMonster newMonster)
         {
-            foreach (JJMonster monster in _monsters)
+            foreach (MMMonster monster in _monsters)
             {
                 if (monster.Intersects(newMonster))
                     return true;
@@ -160,7 +160,7 @@ namespace MonkeyMadness
             return false;
         }
 
-        List<JJMonster> _monsters = new List<JJMonster>(); // monsterlist
+        List<MMMonster> _monsters = new List<MMMonster>(); // monsterlist
         Game _gameMain;             // the game
         Rectangle _screenRect;      // client size of the game
         Rectangle _titleSafe;

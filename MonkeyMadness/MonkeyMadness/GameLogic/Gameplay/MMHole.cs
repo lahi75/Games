@@ -1,21 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace MonkeyMadness
 {
     /// <summary>
     /// class encapsulating a hole in a line
     /// </summary>
-    class JJHole
+    class MMHole
     {              
         /// <summary>
         /// constructor
         /// </summary>
-        public JJHole( Game gameMain )
+        public MMHole( Game gameMain )
         {
             _hole = gameMain.Content.Load<Texture2D>("misc/hole");
 
@@ -63,7 +60,7 @@ namespace MonkeyMadness
             // shift it on x
             _position.X += _increment;
 
-            // check for horizontal wraop around
+            // check for horizontal wrap around
             if (_position.X < _titleSafe.X - _width / 2)
             {
                 _position.X = _titleSafe.Width + _titleSafe.X - _width / 2;
@@ -106,7 +103,7 @@ namespace MonkeyMadness
             return false;
         }
 
-        public Boolean Intersects(JJHole hole)
+        public Boolean Intersects(MMHole hole)
         {
             if (_currentLine == hole._currentLine)
             {

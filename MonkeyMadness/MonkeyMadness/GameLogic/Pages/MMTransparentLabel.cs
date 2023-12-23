@@ -17,7 +17,6 @@ namespace MonkeyMadness
             base.DefaultTexture = gameMain.Content.Load<Texture2D>("misc/transparentLabel");
         }
 
-
         public new bool Update(Point mousePosition, bool mouseDown)
         {            
             return base.Update(mousePosition, mouseDown);

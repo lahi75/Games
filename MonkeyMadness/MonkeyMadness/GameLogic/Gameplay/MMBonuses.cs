@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
 
 namespace MonkeyMadness
 {
@@ -27,7 +25,7 @@ namespace MonkeyMadness
             _gameSpeed = gameSpeed;
             _delta = delta;
             _offset = offset;
-            _currendSecond = 0;
+            _currentSecond = 0;
             _itemChance = itemChance;
 
             Clear();
@@ -51,7 +49,7 @@ namespace MonkeyMadness
         public void Update(GameTime gameTime, Int32 level)
         {
             // create a random new bonus item here
-            if (_currendSecond != (Int32)gameTime.TotalGameTime.TotalSeconds)
+            if (_currentSecond != (Int32)gameTime.TotalGameTime.TotalSeconds)
             {
                 Random r = new Random((int)DateTime.Now.Ticks);
 
@@ -61,7 +59,7 @@ namespace MonkeyMadness
                 if (percentCreate < _itemChance)
                     AddBonus(r,level);
 
-                _currendSecond = (Int32)gameTime.TotalGameTime.TotalSeconds;               
+                _currentSecond = (Int32)gameTime.TotalGameTime.TotalSeconds;               
             }
 
             foreach (MMBonus bonus in _bonuses)
@@ -132,6 +130,6 @@ namespace MonkeyMadness
         float _delta;               // distance between two lines
         Int32 _offset;              // offset of the first line to the top of the screen
         Int32 _itemChance = 5;      // chance of an item to appear in percent per second
-        Int32 _currendSecond;      
+        Int32 _currentSecond;      
     }
 }

@@ -7,22 +7,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MonkeyMadness
 {
-    class JJMonster
+    class MMMonster
     {        
         /// <summary>
         /// constructor
         /// </summary>
-        public JJMonster(Game gameMain, int number, bool ghost, bool vulture)
+        public MMMonster(Game gameMain, int number, bool ghost, bool vulture)
         {
             // create the animation
             _monster = new MMAnimatedTexture(Vector2.Zero, 0, 1.0f, 0.5f, true);
             _ghostShadow = new MMAnimatedTexture(Vector2.Zero, 0, 1.0f, 0.5f, false);
             _ghostShadow1 = new MMAnimatedTexture(Vector2.Zero, 0, 1.0f, 0.5f, false);
-
-            // the monster animation consists of 10 fields
-          //  string s = "monster/monster" + number;
-         //   _monster.Load(gameMain.Content, s, 10, 10);
-
 
             if (ghost)
             {
@@ -247,7 +242,7 @@ namespace MonkeyMadness
         /// <summary>
         /// check if the newly created monster interferes with an existing one
         /// </summary>        
-        public Boolean Intersects(JJMonster monster)
+        public Boolean Intersects(MMMonster monster)
         {
             if (_currentLine == monster._currentLine)
             {

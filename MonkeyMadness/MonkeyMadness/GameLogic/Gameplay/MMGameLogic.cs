@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System;
+using System.Collections.Generic;
 
 namespace MonkeyMadness
 {
-          
     class MMGameLogic
     {
         public enum GameResult
@@ -48,7 +40,7 @@ namespace MonkeyMadness
         JJMonsters _monster;
         JJHoles _holes;
         MMJack _jack1;
-        JJLines _lines;
+        MMLines _lines;
 
         Game _gameMain;
 
@@ -99,7 +91,7 @@ namespace MonkeyMadness
 
             _howToImage = gameMain.Content.Load<Texture2D> ("misc/howto");            
 
-            _lines = new JJLines(gameMain);
+            _lines = new MMLines(gameMain);
             _holes = new JJHoles(gameMain);
             _monster = new JJMonsters(gameMain);
             _jack1 = new MMJack(gameMain);
@@ -114,11 +106,7 @@ namespace MonkeyMadness
 
         public void Init(MMSettings.DifficultyType difficulty, Boolean trial)
         {            
-            _trial = trial;            
-
-#if XBOX
-            _maxLines = 6;
-#endif
+            _trial = trial;
 
             switch (difficulty)
             {
@@ -362,11 +350,7 @@ namespace MonkeyMadness
             {
                 String s = _levelTotalTime.Minutes.ToString("00") + ":" + _levelTotalTime.Seconds.ToString("00");
 
-                int y = 15;
-
-#if XBOX
-                y += 50;
-#endif
+                int y = 30;
 
                 DrawShadowedString(spriteBatch, _font, s, new Vector2(_titleSafe.X + 10, y), Color.Red);
 
@@ -374,9 +358,6 @@ namespace MonkeyMadness
                 // draw points
                 Vector2 position = new Vector2(_titleSafe.Width + _titleSafe.X - _font.MeasureString("Points" + ": ?????").X - 15, _titleSafe.Height + _titleSafe.Y - _font.MeasureString("Points").Y - 5);
 
-#if XBOX
-                position.Y -= 50;
-#endif
 #if WINDOWS_PHONE
                 position.X = 150;
                 position.Y = 15;
@@ -384,16 +365,10 @@ namespace MonkeyMadness
 
                 DrawShadowedString(spriteBatch, _font, "Points" + ": " + (_cumulatedPoints + _points.Points), position, Color.Red);                                
 
-
-
                 _lines.Draw(spriteBatch);
               
                 // draw the number of lifes
-                Vector2 pos = new Vector2(_titleSafe.X + 10, _titleSafe.Height + _titleSafe.Y - _numberLives.Height - 5);     
-           
-#if XBOX
-                pos.Y -= 40;
-#endif
+                Vector2 pos = new Vector2(_titleSafe.X + 10, _titleSafe.Height + _titleSafe.Y - _numberLives.Height - 5);               
 
                 for (int i = 0; i < _jack1.Lives; i++)
                 {                    
@@ -489,15 +464,6 @@ namespace MonkeyMadness
 
         public void Start()
         {
-#if XBOX
-            if (_difficulty == JJSettings.DifficultyType.easy && _level == 1)
-                _howToPlay = true;
-            else
-            {
-                _howToPlay = false;                
-            }
-#endif
-
             UpdateBackground();
 
             if (_jack1.State == MMJack.States.won)
@@ -540,8 +506,8 @@ namespace MonkeyMadness
 
             _points.Init(_level);
 
-            // every second level comes a monster
-            //if (_level % 2 == 0)
+            // every level comes a monster
+            if (_level % 1 == 0)
             {
                 Random r = new Random((int)DateTime.Now.Ticks);
                 _monster.AddMonster(r);
@@ -562,7 +528,6 @@ namespace MonkeyMadness
                 return;
             }
 
-
             int postfix = _level;
 
             if (postfix > 7)
@@ -574,7 +539,6 @@ namespace MonkeyMadness
 
             _holes.SetBackground(_background);
         }
-
         public Int32 CurrentLevel
         {
             get

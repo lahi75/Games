@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace MonkeyMadness
 {
@@ -70,12 +66,11 @@ namespace MonkeyMadness
             return false;
         }
 
-
         public MMAchievementsPage(Game gameMain, Rectangle screenRect)
         {
-             _screenRect = screenRect;
+             _screenRect = screenRect;            
 
-            _buttonExit = new MMButton(gameMain, "Back", false,false);
+            _buttonExit = new MMButton(gameMain, Properties.Resources.strBack, false,false);
             _buttonExit.Hover = true;            
             
             _buttonAchievement0 = new MMAchievementButton(gameMain, AchievementsManager.Achievements.AchievementNewbie);
@@ -92,10 +87,6 @@ namespace MonkeyMadness
             _buttonAchievement11 = new MMAchievementButton(gameMain, AchievementsManager.Achievements.AchievementStalker);
 
             int y = 420;
-
-#if XBOX
-            y -= 20;
-#endif
 
             _buttonExit.CenterPosition(new Vector2(screenRect.Width / 2, y));
 
@@ -119,8 +110,7 @@ namespace MonkeyMadness
             _tinyFont = gameMain.Content.Load<SpriteFont>("fonts/tinyFont");
             _mediumFont = gameMain.Content.Load<SpriteFont>("fonts/mediumFont");
             
-            _background = gameMain.Content.Load<Texture2D>("background/form_aux");
-            
+            _background = gameMain.Content.Load<Texture2D>("background/form_aux");            
             _currentState = State.Overview;
         }
 
@@ -187,62 +177,58 @@ namespace MonkeyMadness
             {
                 case State.Overview:                      
                     
-                    position = new Vector2(80, 20);         
-                    
-           #if XBOX
-                    position.Y += 20;
-           #endif
+                    position = new Vector2(80, 20);                                        
 
-                    DrawShadowedString(spriteBatch, _largeFont, "Award", position, Color.Gold);
+                    DrawShadowedString(spriteBatch, _largeFont, Properties.Resources.strAward, position, Color.Gold);
 
                     _buttonAchievement0.Draw(spriteBatch, _font);
                     Rectangle r = _buttonAchievement0.GetRect();
                     Vector2 pos = new Vector2( r.X, r.Y + r.Height + 5 );
                     pos.X += r.Width / 2;
-                    pos.X -= _tinyFont.MeasureString("Newbie").X / 2;
-                    spriteBatch.DrawString(_tinyFont, "Newbie", pos, _buttonAchievement0.Hover ? Color.Red : Color.Gold);                    
+                    pos.X -= _tinyFont.MeasureString( Properties.Resources.AchievementNewbie).X / 2;
+                    spriteBatch.DrawString(_tinyFont, Properties.Resources.AchievementNewbie, pos, _buttonAchievement0.Hover ? Color.Red : Color.Gold);                    
 
                     _buttonAchievement1.Draw(spriteBatch, _font);
                     r = _buttonAchievement1.GetRect();
                     pos = new Vector2( r.X, r.Y + r.Height + 5 );
                     pos.X += r.Width / 2;                        
-                    pos.X -= _tinyFont.MeasureString("Ghost Buster").X / 2;
-                    spriteBatch.DrawString(_tinyFont, "Ghost Buster", pos, _buttonAchievement1.Hover ? Color.Red : Color.Gold);
+                    pos.X -= _tinyFont.MeasureString( Properties.Resources.AchievementGhostBuster).X / 2;
+                    spriteBatch.DrawString(_tinyFont, Properties.Resources.AchievementGhostBuster, pos, _buttonAchievement1.Hover ? Color.Red : Color.Gold);
 
                     _buttonAchievement2.Draw(spriteBatch, _font);
                     r = _buttonAchievement2.GetRect();
                     pos = new Vector2( r.X, r.Y + r.Height + 5 );
                     pos.X += r.Width / 2;                        
-                    pos.X -= _tinyFont.MeasureString("Driller Killer").X / 2;
-                    spriteBatch.DrawString(_tinyFont, "Driller Killer", pos, _buttonAchievement2.Hover ? Color.Red : Color.Gold);
+                    pos.X -= _tinyFont.MeasureString(Properties.Resources.AchievementDrillerKiller).X / 2;
+                    spriteBatch.DrawString(_tinyFont, Properties.Resources.AchievementDrillerKiller, pos, _buttonAchievement2.Hover ? Color.Red : Color.Gold);
 
                     _buttonAchievement3.Draw(spriteBatch, _font);
                      r = _buttonAchievement3.GetRect();
                     pos = new Vector2( r.X, r.Y + r.Height + 5 );
                     pos.X += r.Width / 2;
-                    pos.X -= _tinyFont.MeasureString("Speedy Gonzsales").X / 2;
-                    spriteBatch.DrawString(_tinyFont, "Speedy Gonzsales", pos, _buttonAchievement3.Hover ? Color.Red : Color.Gold);
+                    pos.X -= _tinyFont.MeasureString(Properties.Resources.AchievementSpeedyGonzales).X / 2;
+                    spriteBatch.DrawString(_tinyFont, Properties.Resources.AchievementSpeedyGonzales, pos, _buttonAchievement3.Hover ? Color.Red : Color.Gold);
 
                     _buttonAchievement4.Draw(spriteBatch, _font);
                     r = _buttonAchievement4.GetRect();
                     pos = new Vector2( r.X, r.Y + r.Height + 5 );
                     pos.X += r.Width / 2;
-                    pos.X -= _tinyFont.MeasureString("Lucky Devil").X / 2;
-                    spriteBatch.DrawString(_tinyFont, "Lucky Devil", pos, _buttonAchievement4.Hover ? Color.Red : Color.Gold);
+                    pos.X -= _tinyFont.MeasureString(Properties.Resources.AchievmentLuckyDevil).X / 2;
+                    spriteBatch.DrawString(_tinyFont, Properties.Resources.AchievmentLuckyDevil, pos, _buttonAchievement4.Hover ? Color.Red : Color.Gold);
                    
                     _buttonAchievement5.Draw(spriteBatch, _font);
                     r = _buttonAchievement5.GetRect();
                     pos = new Vector2( r.X, r.Y + r.Height + 5 );
                     pos.X += r.Width / 2;
-                    pos.X -= _tinyFont.MeasureString("Tumbler").X / 2;
-                    spriteBatch.DrawString(_tinyFont, "Tumbler", pos, _buttonAchievement5.Hover ? Color.Red : Color.Gold);
+                    pos.X -= _tinyFont.MeasureString(Properties.Resources.AchievementTumbler).X / 2;
+                    spriteBatch.DrawString(_tinyFont, Properties.Resources.AchievementTumbler, pos, _buttonAchievement5.Hover ? Color.Red : Color.Gold);
 
                     _buttonAchievement6.Draw(spriteBatch, _font);
                     r = _buttonAchievement6.GetRect();
                     pos = new Vector2( r.X, r.Y + r.Height + 5 );
                     pos.X += r.Width / 2;
-                    pos.X -= _tinyFont.MeasureString("Lefty").X / 2;
-                    spriteBatch.DrawString(_tinyFont, "Lefty", pos, _buttonAchievement6.Hover ? Color.Red : Color.Gold);
+                    pos.X -= _tinyFont.MeasureString(Properties.Resources.AchievementLefty).X / 2;
+                    spriteBatch.DrawString(_tinyFont, Properties.Resources.AchievementLefty, pos, _buttonAchievement6.Hover ? Color.Red : Color.Gold);
 
                     ///////////////////// new line //////////////////////7
 
@@ -250,39 +236,39 @@ namespace MonkeyMadness
                     r = _buttonAchievement7.GetRect();
                     pos = new Vector2( r.X, r.Y + r.Height + 5 );
                     pos.X += r.Width / 2;
-                    pos.X -= _tinyFont.MeasureString("Pleasant").X / 2;
-                    spriteBatch.DrawString(_tinyFont, "Pleasant", pos, _buttonAchievement7.Hover ? Color.Red : Color.Gold);
+                    pos.X -= _tinyFont.MeasureString(Properties.Resources.AchievmentPleasantJourney).X / 2;
+                    spriteBatch.DrawString(_tinyFont, Properties.Resources.AchievmentPleasantJourney, pos, _buttonAchievement7.Hover ? Color.Red : Color.Gold);
 
                     _buttonAchievement8.Draw(spriteBatch, _font);
                     r = _buttonAchievement8.GetRect();
                     pos = new Vector2( r.X, r.Y + r.Height + 5 );
                     pos.X += r.Width / 2;
-                    pos.X -= _tinyFont.MeasureString("Icarus").X / 2;
-                    spriteBatch.DrawString(_tinyFont, "Icarus", pos, _buttonAchievement8.Hover ? Color.Red : Color.Gold);
+                    pos.X -= _tinyFont.MeasureString(Properties.Resources.AchievementIcarus).X / 2;
+                    spriteBatch.DrawString(_tinyFont, Properties.Resources.AchievementIcarus, pos, _buttonAchievement8.Hover ? Color.Red : Color.Gold);
 
                     _buttonAchievement9.Draw(spriteBatch, _font);
                     r = _buttonAchievement9.GetRect();
                     pos = new Vector2( r.X, r.Y + r.Height + 5 );
                     pos.X += r.Width / 2;
-                    pos.X -= _tinyFont.MeasureString("Cheater").X / 2;
-                    spriteBatch.DrawString(_tinyFont, "Cheater", pos, _buttonAchievement9.Hover ? Color.Red : Color.Gold);
+                    pos.X -= _tinyFont.MeasureString(Properties.Resources.AchievementCheater).X / 2;
+                    spriteBatch.DrawString(_tinyFont, Properties.Resources.AchievementCheater, pos, _buttonAchievement9.Hover ? Color.Red : Color.Gold);
 
                     _buttonAchievement10.Draw(spriteBatch, _font);
                     r = _buttonAchievement10.GetRect();
                     pos = new Vector2( r.X, r.Y + r.Height + 5 );
                     pos.X += r.Width / 2;
-                    pos.X -= _tinyFont.MeasureString("Super").X / 2;
-                    spriteBatch.DrawString(_tinyFont, "Super", pos, _buttonAchievement10.Hover ? Color.Red : Color.Gold);
+                    pos.X -= _tinyFont.MeasureString(Properties.Resources.AchievementSuper).X / 2;
+                    spriteBatch.DrawString(_tinyFont, Properties.Resources.AchievementSuper, pos, _buttonAchievement10.Hover ? Color.Red : Color.Gold);
 
                     _buttonAchievement11.Draw(spriteBatch, _font);
                     r = _buttonAchievement11.GetRect();
                     pos = new Vector2( r.X, r.Y + r.Height + 5 );
                     pos.X += r.Width / 2;
-                    pos.X -= _tinyFont.MeasureString("Stalker").X / 2;
-                    spriteBatch.DrawString(_tinyFont, "Stalker", pos, _buttonAchievement11.Hover ? Color.Red : Color.Gold);
+                    pos.X -= _tinyFont.MeasureString(Properties.Resources.AchievementStalker).X / 2;
+                    spriteBatch.DrawString(_tinyFont, Properties.Resources.AchievementStalker, pos, _buttonAchievement11.Hover ? Color.Red : Color.Gold);
 
                     break;
-                    /*
+                    
                 case State.Achievement0Detail:
                     DrawAchievementDetail(spriteBatch, _buttonAchievement0.Achievement);
                     break;
@@ -329,7 +315,7 @@ namespace MonkeyMadness
 
                 case State.Achievement11Detail:
                     DrawAchievementDetail(spriteBatch, _buttonAchievement11.Achievement);
-                    break;       */             
+                    break;           
             }
      
             _buttonExit.Draw(spriteBatch, _font);
@@ -348,11 +334,7 @@ namespace MonkeyMadness
 
             position = new Vector2(80, 20);
 
-#if XBOX
-            position.Y += 20;
-#endif
-
-            DrawShadowedString(spriteBatch, _largeFont, "Award", position, Color.Gold);
+            DrawShadowedString(spriteBatch, _largeFont, Properties.Resources.strAward, position, Color.Gold);
 
             position.X = 80;
             position.Y = 170;
@@ -363,7 +345,7 @@ namespace MonkeyMadness
             s = achievement.Name;
             position.X += 80;
             position.Y += achievement.Image.Height / 2;
-            position.Y -= _mediumFont.MeasureString(s).Y/2;
+            position.Y -= _mediumFont.MeasureString(s).Y / 2;
 
             DrawShadowedString(spriteBatch, _mediumFont, s, position, Color.Gold);
 
@@ -371,9 +353,10 @@ namespace MonkeyMadness
             position.Y += 80;
             s = achievement.Description;
 
-            DrawShadowedString(spriteBatch, _tinyFont, s, position, Color.Gold);
+            DrawShadowedString(spriteBatch, _smallFont, s, position, Color.Gold);
             Unhover();
             _buttonExit.Hover = true;
+
         }
 
         public void Right()
@@ -444,7 +427,6 @@ namespace MonkeyMadness
                 _buttonExit.Hover = true;
             }
         }
-
         public void Left()
         {
             if (_buttonExit.Hover)
@@ -557,7 +539,6 @@ namespace MonkeyMadness
                 _buttonAchievement5.Hover = true;
             }
         }
-
         public void Down()
         {
             if (_buttonAchievement6.Hover || _buttonAchievement7.Hover || _buttonAchievement8.Hover || _buttonAchievement9.Hover || _buttonAchievement10.Hover || _buttonAchievement11.Hover)
@@ -601,7 +582,6 @@ namespace MonkeyMadness
                 _buttonAchievement11.Hover = true;
             }
         }
-
         public void Unhover()
         {
             _buttonAchievement0.Hover = false;
