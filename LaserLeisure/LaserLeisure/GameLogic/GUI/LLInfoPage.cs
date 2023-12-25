@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Globalization;
 using LaserLeisure.Properties;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Globalization;
 #if WINDOWS_PHONE
 using Microsoft.Phone.Tasks;
 #endif
@@ -58,11 +55,6 @@ namespace LLGameLibrary
             //_howtoLabel = new LLLinkLabel(content, Resources.infoHowtoContent, Resources.infoHowtoContent + "/laser", "", Color.Yellow, Color.Yellow, LLLinkLabel.Task.Webbrowser);
             //_soundjayLabel = new LLLinkLabel(content, Resources.infoAudioContent, Resources.infoAudioContent, "", Color.Yellow, Color.Yellow, LLLinkLabel.Task.Webbrowser);
 
-#if WINDOWS_PHONE
-            _rateButton = new LLButton(content, "", false, false);
-            _rateButton.DefaultTexture = _rateButton.HoverTexture = _rateButton.PressedTexture = _rateButton.HoverPressedTexture = LoadLocalizedAsset<Texture2D>("buttons/rate_game");
-            _rateButton.CenterPosition(new Vector2(670, 350));
-#endif
         }
 
         public Result Update(GameTime gameTime, Point mousePosition, bool mouseDown)
@@ -70,21 +62,6 @@ namespace LLGameLibrary
             //_emailLabel.Update(mousePosition, mouseDown);
             //_howtoLabel.Update(mousePosition, mouseDown);
             //_soundjayLabel.Update(mousePosition, mouseDown);
-
-#if WINDOWS_PHONE
-            try
-            {
-                if (_rateButton.Update(mousePosition, mouseDown))
-                {
-                    MarketplaceReviewTask marketplaceReviewTask = new MarketplaceReviewTask();
-                    marketplaceReviewTask.Show();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.Message);
-            }
-#endif
 
             return Result.noresult;
         }
@@ -112,46 +89,9 @@ namespace LLGameLibrary
             
             int tabX = LargestLabel();
 
-            // contact label            
-            position.X = 30;
-            position.Y = 150;
-
-            spriteBatch.DrawString( _font18, Resources.infoContactLabel, position, Color.White);
-
-            position.X += tabX + 20;
-
-            //_emailLabel.SetPosition(position);
-            //_emailLabel.Draw(spriteBatch);            
-
-
-            // webpage label
-            position.X = 30;
-            position.Y = 230;
-
-            spriteBatch.DrawString(_font18, Resources.infoHowtoLabel, position, Color.White);
-
-            position.X += tabX + 20;
-
-            //_howtoLabel.SetPosition(position);
-            //_howtoLabel.Draw(spriteBatch);
-
-
-            // audio label            
-
-            position.X = 30;
-            position.Y = 310;
-
-            spriteBatch.DrawString(_font18, Resources.infoAudioLabel, position, Color.White);
-
-            position.X += tabX + 20;
-
-            //_soundjayLabel.SetPosition(position);
-            //_soundjayLabel.Draw(spriteBatch);
-
-
             // version label            
             position.X = 30;
-            position.Y = 390;
+            position.Y = 150;
 
             spriteBatch.DrawString(_font18, Resources.infoVersion, position, Color.White);
 
@@ -159,11 +99,42 @@ namespace LLGameLibrary
 
             spriteBatch.DrawString(_font18, _version, position, Color.White);
 
-          
 
-#if WINDOWS_PHONE
-            _rateButton.Draw(spriteBatch, _font18);
-#endif
+            // contact label            
+            //position.X = 30;
+            //position.Y = 150;
+
+            //spriteBatch.DrawString( _font18, Resources.infoContactLabel, position, Color.White);
+
+            //position.X += tabX + 20;
+
+            ////_emailLabel.SetPosition(position);
+            ////_emailLabel.Draw(spriteBatch);            
+
+
+            //// webpage label
+            //position.X = 30;
+            //position.Y = 230;
+
+            //spriteBatch.DrawString(_font18, Resources.infoHowtoLabel, position, Color.White);
+
+            //position.X += tabX + 20;
+
+            ////_howtoLabel.SetPosition(position);
+            ////_howtoLabel.Draw(spriteBatch);
+
+
+            //// audio label            
+
+            //position.X = 30;
+            //position.Y = 310;
+
+            //spriteBatch.DrawString(_font18, Resources.infoAudioLabel, position, Color.White);
+
+            //position.X += tabX + 20;
+
+            //_soundjayLabel.SetPosition(position);
+            //_soundjayLabel.Draw(spriteBatch);
         }
 
         private int LargestLabel()

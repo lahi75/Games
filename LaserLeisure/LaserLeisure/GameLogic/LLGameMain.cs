@@ -1,15 +1,12 @@
+using LaserLeisure.Properties;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using System.IO;
-using Microsoft.Xna.Framework.Media;
 using System.Globalization;
 using System.Threading;
-using LaserLeisure.Properties;
 
 namespace LLGameLibrary
 {
@@ -39,7 +36,6 @@ namespace LLGameLibrary
         }
 
         int _songIndex = 0;
-
         double _debounceStart = 0;
         
         Rectangle _screenRect;        
@@ -63,11 +59,6 @@ namespace LLGameLibrary
 
         public void UpdateMusic(GameState gameState, LLLevel.LevelState levelState)
         {
-#if WINDOWS_PHONE
-
-            if (LLGameMain.MusicPlayer.IsExternalPlay)
-                return;
-#endif
             if (SettingsManager.Settings.Music == false)
             {
                 if (MediaPlayer.State != MediaState.Stopped)
@@ -81,7 +72,6 @@ namespace LLGameLibrary
                     }
                 }
             }
-
 
             if (levelState == LLLevel.LevelState.edit && gameState == GameState.Game )
             {
@@ -112,7 +102,6 @@ namespace LLGameLibrary
                 }
             }
         }
-
         private void PlaySong(int number)
         {
             if( _songIndex != number )
@@ -230,12 +219,12 @@ namespace LLGameLibrary
                             case LLLevelPage.LevelResult.noresult:
                                 break;
                             case LLLevelPage.LevelResult.game:
-                                //_intro.Init(SettingsManager.Settings.LevelStage,_levelPage.SelectedLevel);
-                                //_currentState = GameState.LevelIntro;                               
+                                _intro.Init(SettingsManager.Settings.LevelStage,_levelPage.SelectedLevel);
+                                _currentState = GameState.LevelIntro;                               
 
                                 //temp
-                                _game.Init(SettingsManager.Settings.LevelStage, _levelPage.SelectedLevel);
-                                _currentState = GameState.Game;
+                                //_game.Init(SettingsManager.Settings.LevelStage, _levelPage.SelectedLevel);
+                                //_currentState = GameState.Game;
                                 break;
                         }
                     }

@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
 using LaserLeisure.Properties;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LLGameLibrary
 {
@@ -185,19 +181,19 @@ namespace LLGameLibrary
             _buttonMaster.Draw(spriteBatch, _font18);         
 
             // Draw table headers 
-            position.X = 30;
+            //position.X = 30;
 
-            position.Y = 240;
-            spriteBatch.DrawString(_font18, Resources.highScoreLocal, position, Color.White);
+            //position.Y = 240;
+            //spriteBatch.DrawString(_font18, Resources.highScoreLocal, position, Color.White);
 
-            position.X = 280;
-            spriteBatch.DrawString(_font18, Resources.highScoreWeek, position, Color.White);
+            //position.X = 280;
+            //spriteBatch.DrawString(_font18, Resources.highScoreWeek, position, Color.White);
 
-            position.X = 540;
-            spriteBatch.DrawString(_font18, Resources.highScoreAll, position, Color.White);
+            //position.X = 540;
+            //spriteBatch.DrawString(_font18, Resources.highScoreAll, position, Color.White);
 
-            position.X = 30;
-            position.Y = 240;
+            position.X = 300;
+            position.Y = 180;
 
             position.Y += 20;
 
@@ -219,9 +215,7 @@ namespace LLGameLibrary
         //    if (_allhighscore.IsUpdating || _weekhighscore.IsUpdating)
          //       _updateLabel.Draw(spriteBatch, _font21);
 #endif
-
-            //spriteBatch.Draw(_accept, AcceptPosition(), Color.White);
-                                   
+            //spriteBatch.Draw(_accept, AcceptPosition(), Color.White);                                   
         }
 
     

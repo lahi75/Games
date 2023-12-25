@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Graphics;
+﻿using LaserLeisure.Properties;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using System.Text.RegularExpressions;
-using LaserLeisure.Properties;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LLGameLibrary
 {
@@ -27,10 +23,7 @@ namespace LLGameLibrary
 
         Rectangle _screenRect;
         Texture2D _background;
-        ContentManager _content;
-        #if WINDOWS_PHONE
-        PlayerIndex _playerIndex = PlayerIndex.One;
-        #endif
+        ContentManager _content;   
 
         Boolean _back = false;
 
@@ -86,30 +79,7 @@ namespace LLGameLibrary
             }
 
             if (_buttonEnterName.Update(mousePosition, mouseDown))
-                _currentState = State.EnterName;
-
-            if (_currentState == State.EnterName)
-            {
-#if WINDOWS_PHONE
-
-                if (!Guide.IsVisible)
-                    Guide.BeginShowKeyboardInput(_playerIndex, Resources.username, Resources.enteruser, Playername, delegate(IAsyncResult result)
-                    {
-                        string name = Guide.EndShowKeyboardInput(result);
-
-                        if (name != null && name.Length > 0)
-                        {                            
-                            name = Regex.Replace(name, @"[^\u0000-\u007F]", ".");
-
-                            if (name.Length > 10)
-                                Playername = name.Remove(10);
-                            else
-                                Playername = name;
-                        }
-                        _currentState = State.OptionsPage;
-                    }, null);
-#endif
-            }
+                _currentState = State.EnterName;          
 
             if (_ladderMode.Update(mousePosition, mouseDown))
                 _freestyleMode.Press = false;

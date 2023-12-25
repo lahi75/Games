@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 
-
 namespace LaserLeisure
 {
     public class WinGame : Game
@@ -13,7 +12,6 @@ namespace LaserLeisure
         SpriteBatch spriteBatch;
 
         LLGameMain _game;
-
         LLMouse _mouse;
 
         public WinGame()
@@ -32,9 +30,16 @@ namespace LaserLeisure
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            base.Window.Title = "Laser Leisure";
 
             base.Initialize();
+
+            string s = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
+            _game.SetVersion(s);
+
+            // initialize with the logon name, ignore the domain name, take just the user            
+            _game.SetName(System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\')[1]);
         }
 
         /// <summary>
@@ -50,7 +55,6 @@ namespace LaserLeisure
             Rectangle titleSafe = r;
 
             _game = new LLGameLibrary.LLGameMain(this, Services, r, titleSafe);
-
             _mouse = new LLMouse(new Vector2(0, 0), this.Content.Load<Texture2D>("cursor"));
         }
 
@@ -80,13 +84,11 @@ namespace LaserLeisure
             Point p = new Point(Mouse.GetState().X, Mouse.GetState().Y);
 
             Boolean click = Mouse.GetState().LeftButton == ButtonState.Pressed;
-
-            //_game.Update(gameTime, p, click);
+            
             _game.Update(gameTime, p, click);
 
             //update mouse cursor
             _mouse.Update();
-
 
             base.Update(gameTime);
         }

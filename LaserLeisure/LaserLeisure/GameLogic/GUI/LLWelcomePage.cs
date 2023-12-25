@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Audio;
+﻿using LaserLeisure.Properties;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using System.Globalization;
-using LaserLeisure.Properties;
 
-#if WINDOWS_PHONE
-using Microsoft.Phone.Tasks;
-#endif
 
 namespace LLGameLibrary
 {
@@ -23,11 +15,7 @@ namespace LLGameLibrary
         LLButton _buttonOptions;
         LLButton _buttonInstructions;        
         LLButton _buttonHighscore;
-        LLButton _buttonInfo;
-
-        LLButton _buttonMore;
-
-        //LLNewsTicker _newsTicker;        
+        LLButton _buttonInfo;        
                                   
         Rectangle _screenRect;
         Texture2D _background;        
@@ -47,29 +35,22 @@ namespace LLGameLibrary
         public LLWelcomePage(ContentManager content, Rectangle screenRect, string language)
         {
             _content = content;
-
             
             _buttonPlay = new LLButton(content, Resources.welcomePlay, false,false);
-            _buttonPlay.CenterPosition(new Vector2(screenRect.Width/2, 140));
+            _buttonPlay.CenterPosition(new Vector2(screenRect.Width/2, 100));
 
             _buttonOptions = new LLButton(content, Resources.optionHeader, false, false);
-            _buttonOptions.CenterPosition(new Vector2(screenRect.Width/2, 210));
+            _buttonOptions.CenterPosition(new Vector2(screenRect.Width/2, 170));
 
             _buttonInstructions = new LLButton(content, Resources.instHeader, false, false);
-            _buttonInstructions.CenterPosition(new Vector2(screenRect.Width / 2, 280));
+            _buttonInstructions.CenterPosition(new Vector2(screenRect.Width / 2, 240));
 
             _buttonHighscore = new LLButton(content, Resources.highscoreHeader, false, false);
-            _buttonHighscore.CenterPosition(new Vector2(screenRect.Width/2,350));
+            _buttonHighscore.CenterPosition(new Vector2(screenRect.Width/2,310));
 
             _buttonInfo = new LLButton(content, Resources.dlgInfo, false, false);
-            _buttonInfo.CenterPosition(new Vector2(screenRect.Width / 2, 420));
-
-            //_newsTicker = new LLNewsTicker(content, new Point(0, 0), language);
-            
-            _buttonMore = new LLButton(content,"", false, false);
-            _buttonMore.DefaultTexture = _buttonMore.HoverTexture = _buttonMore.PressedTexture = _buttonMore.HoverPressedTexture = LoadLocalizedAsset<Texture2D>("buttons/more_games");                                                                        
-            _buttonMore.CenterPosition(new Vector2(screenRect.Width / 2 + screenRect.X + 270, 400));
-            
+            _buttonInfo.CenterPosition(new Vector2(screenRect.Width / 2, 380));
+                      
             _background = content.Load<Texture2D>("backgrounds/welcome");
             _screenRect = screenRect;
 
@@ -92,30 +73,7 @@ namespace LLGameLibrary
                 return WelcomeResult.info;
 
             if (_buttonHighscore.Update(mousePosition, mouseDown))
-                return WelcomeResult.highscore;
-
-            //_newsTicker.Update(game,mousePosition,mouseDown);
-
-            if (_buttonMore.Update(mousePosition, mouseDown))
-            {
-                // open website
-                #if WINDOWS_PHONE
-                try
-                {
-                    MarketplaceSearchTask marketplaceSearchTask = new MarketplaceSearchTask();
-                    marketplaceSearchTask.SearchTerms = "Phoebit";
-                    marketplaceSearchTask.Show();
-                }
-                catch (Exception e)
-                {
-                    Console.Write(e.Message);
-                }
-                #endif
-                #if WINDOWS
-                   System.Diagnostics.Process.Start(Resources.moreGamesURL);                                
-                #endif
-            }    
-
+                return WelcomeResult.highscore;                      
            
             return WelcomeResult.noresult;
         }
@@ -129,10 +87,7 @@ namespace LLGameLibrary
             _buttonOptions.Draw(spriteBatch, _font18);
             _buttonInfo.Draw(spriteBatch, _font18);            
             _buttonHighscore.Draw(spriteBatch, _font18);
-            _buttonInstructions.Draw(spriteBatch, _font18);            
-
-            //_newsTicker.Draw(spriteBatch);            
-            _buttonMore.Draw(spriteBatch, _font18);                     
+            _buttonInstructions.Draw(spriteBatch, _font18);                        
         }                      
         
         T LoadLocalizedAsset<T>(string assetName)

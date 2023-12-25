@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
+﻿using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 
 namespace LLGameLibrary
 {
-
     public class LLFx
     {
         public LLFx()
@@ -171,8 +164,7 @@ namespace LLGameLibrary
 
     static class LLFxManager
     {
-        public static LLFx Fx = new LLFx();
-        
+        public static LLFx Fx = new LLFx();        
         public static void LoadSettings(ContentManager content)
         {            
             Fx = new LLFx();

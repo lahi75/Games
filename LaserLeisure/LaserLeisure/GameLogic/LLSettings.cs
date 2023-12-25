@@ -1,12 +1,11 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.IO.IsolatedStorage;
 using System.Xml.Serialization;
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using System;
 
 namespace LLGameLibrary
-{    
+{
     #region application settings 
     /// <summary>
     /// ctor
