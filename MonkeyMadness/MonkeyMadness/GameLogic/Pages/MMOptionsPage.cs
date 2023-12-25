@@ -103,7 +103,7 @@ namespace MonkeyMadness
                 #if WINDOWS_PHONE    || XBOX             
 
                 if (!Guide.IsVisible)
-                    Guide.BeginShowKeyboardInput(_playerIndex, Resource1.strUserName, Resource1.strEnterUserName, Playername, delegate(IAsyncResult result) 
+                    Guide.BeginShowKeyboardInput(_playerIndex, Resources.strUserName, Resources.strEnterUserName, Playername, delegate(IAsyncResult result) 
                 { 
                     string name = Guide.EndShowKeyboardInput(result);
 

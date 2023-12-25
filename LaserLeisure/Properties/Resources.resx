@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="btnAdvanced" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="btnContinue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="btnDontReset" xml:space="preserve">
+    <value>Don't Reset</value>
+  </data>
+  <data name="btnExpert" xml:space="preserve">
+    <value>Expert</value>
+  </data>
+  <data name="btnNovice" xml:space="preserve">
+    <value>Novice</value>
+  </data>
+  <data name="btnQuit" xml:space="preserve">
+    <value>Quit</value>
+  </data>
+  <data name="btnRepeat" xml:space="preserve">
+    <value>Repeat</value>
+  </data>
+  <data name="btnReset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="btnResume" xml:space="preserve">
+    <value>Resume</value>
+  </data>
+  <data name="dlgActive" xml:space="preserve">
+    <value>active</value>
+  </data>
+  <data name="dlgAllDone" xml:space="preserve">
+    <value>All Level completed</value>
+  </data>
+  <data name="dlgBomb" xml:space="preserve">
+    <value>You hit a bomb, all tools are reset.</value>
+  </data>
+  <data name="dlgBonus" xml:space="preserve">
+    <value>Bonus Points</value>
+  </data>
+  <data name="dlgCompleted" xml:space="preserve">
+    <value>Level completed</value>
+  </data>
+  <data name="dlgDone" xml:space="preserve">
+    <value>done</value>
+  </data>
+  <data name="dlgFreestyle" xml:space="preserve">
+    <value>freestyle</value>
+  </data>
+  <data name="dlgInfo" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="dlgLadder" xml:space="preserve">
+    <value>ladder</value>
+  </data>
+  <data name="dlgLevelSelection" xml:space="preserve">
+    <value>Level Selection</value>
+  </data>
+  <data name="dlgNotCompleted" xml:space="preserve">
+    <value>Level not completed</value>
+  </data>
+  <data name="dlgPause" xml:space="preserve">
+    <value>Game paused</value>
+  </data>
+  <data name="dlgPenalty" xml:space="preserve">
+    <value>Penalty Points</value>
+  </data>
+  <data name="dlgPoints" xml:space="preserve">
+    <value>Points:</value>
+  </data>
+  <data name="dlgResetLadder" xml:space="preserve">
+    <value>Reset ladder progress?</value>
+  </data>
+  <data name="dlgStatus" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="dlgTime" xml:space="preserve">
+    <value>Time Points</value>
+  </data>
+  <data name="dlgTools" xml:space="preserve">
+    <value>Tool Costs</value>
+  </data>
+  <data name="dlgTotal" xml:space="preserve">
+    <value>Total Points</value>
+  </data>
+  <data name="enteruser" xml:space="preserve">
+    <value>Enter a name for the highscore list</value>
+  </data>
+  <data name="highScoreAll" xml:space="preserve">
+    <value>All Time High</value>
+  </data>
+  <data name="highScoreCaption" xml:space="preserve">
+    <value>Highscores</value>
+  </data>
+  <data name="highscoreHeader" xml:space="preserve">
+    <value>Highscores</value>
+  </data>
+  <data name="highScoreLocal" xml:space="preserve">
+    <value>Local</value>
+  </data>
+  <data name="highScoreRequestURL" xml:space="preserve">
+    <value>http://lars.msbase.de/highscores/requestscores_ll.php</value>
+  </data>
+  <data name="highScoreSendURL" xml:space="preserve">
+    <value>http://lars.msbase.de/highscores/newscore_ll.php</value>
+  </data>
+  <data name="highScoreUpdate" xml:space="preserve">
+    <value>Updating</value>
+  </data>
+  <data name="highScoreWeek" xml:space="preserve">
+    <value>Champ of the Week</value>
+  </data>
+  <data name="infoAudioContent" xml:space="preserve">
+    <value>http://www.soundjay.com</value>
+  </data>
+  <data name="infoAudioLabel" xml:space="preserve">
+    <value>Audio:</value>
+  </data>
+  <data name="infoContactContent" xml:space="preserve">
+    <value>laser@phoebit.com</value>
+  </data>
+  <data name="infoContactLabel" xml:space="preserve">
+    <value>Contact:</value>
+  </data>
+  <data name="infoHowtoContent" xml:space="preserve">
+    <value>http://apps.phoebit.com</value>
+  </data>
+  <data name="infoHowtoLabel" xml:space="preserve">
+    <value>Game Webpage:</value>
+  </data>
+  <data name="infoVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="instGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="instGeneralLine1" xml:space="preserve">
+    <value>Laser Leisure is puzzle game and a brain teaser.</value>
+  </data>
+  <data name="instGeneralLine2" xml:space="preserve">
+    <value>Place tools on the workbench to bend and split laser beams to hit targets.</value>
+  </data>
+  <data name="instGeneralLine3" xml:space="preserve">
+    <value>Avoid obstacles which will absorb your beams. Some obstacles explode when hit.</value>
+  </data>
+  <data name="instGeneralLine4" xml:space="preserve">
+    <value>Keep an eye on the time counter. The laser will fire automatically when it reaches zero.</value>
+  </data>
+  <data name="instGeneralLine5" xml:space="preserve">
+    <value>Score points and play on the ladder or play freestyle without competition.</value>
+  </data>
+  <data name="instHeader" xml:space="preserve">
+    <value>Instructions</value>
+  </data>
+  <data name="instLaser" xml:space="preserve">
+    <value>Laser</value>
+  </data>
+  <data name="instLaserLine1" xml:space="preserve">
+    <value>There are different kinds of lasers available. Tap a laser to fire them all. </value>
+  </data>
+  <data name="instLaserLine2" xml:space="preserve">
+    <value>Never hit a laser with a beam or it will break and the level can't be fulfilled.</value>
+  </data>
+  <data name="instLaserLine3" xml:space="preserve">
+    <value>Hit all the targets with a beam of the corresponding color. </value>
+  </data>
+  <data name="instLaserLine4" xml:space="preserve">
+    <value>Hitting a target with the wrong beam breaks the target and the level must be repeated.</value>
+  </data>
+  <data name="instObstacles" xml:space="preserve">
+    <value>Obstacles</value>
+  </data>
+  <data name="instObstaclesLine1" xml:space="preserve">
+    <value>Walls block the path of the beam. They will absorb a beam.</value>
+  </data>
+  <data name="instObstaclesLine2" xml:space="preserve">
+    <value>Avoid to hit a bomb at all costs. An exploding bomb resets your level setup.</value>
+  </data>
+  <data name="instObstaclesLine3" xml:space="preserve">
+    <value>Fixed tools have the same function as the standard tools but they can't be moved.</value>
+  </data>
+  <data name="instObstaclesLine4" xml:space="preserve">
+    <value>Laser are obstacles to all beams.</value>
+  </data>
+  <data name="instObstaclesLine5" xml:space="preserve">
+    <value>Targets are obstacles to all beams except the to color matching beams.</value>
+  </data>
+  <data name="instPoints" xml:space="preserve">
+    <value>Points</value>
+  </data>
+  <data name="instPointsLine1" xml:space="preserve">
+    <value>Points per level are accumulated in ladder mode only. </value>
+  </data>
+  <data name="instPointsLine2" xml:space="preserve">
+    <value>Completing a difficulty stage of 10 levels will send the points to the leaderboard.</value>
+  </data>
+  <data name="instPointsLine3" xml:space="preserve">
+    <value>You start each level with 100 points. Each failed laser shot deducts 10 points.</value>
+  </data>
+  <data name="instPointsLine4" xml:space="preserve">
+    <value>You can score up to 9 bonus points by setting up a workbench quickly.</value>
+  </data>
+  <data name="instPointsLine5" xml:space="preserve">
+    <value>This bonus item randomly shows up at the first laser shot. Gain 30 points with a hit.</value>
+  </data>
+  <data name="instToolLine1" xml:space="preserve">
+    <value>Use the crosshair to help placing the tools.</value>
+  </data>
+  <data name="instToolLine2" xml:space="preserve">
+    <value>The mirror reflects or absorbs the beam, depending on which side the beam hits it.</value>
+  </data>
+  <data name="instToolLine3" xml:space="preserve">
+    <value>The semi-mirror splits the beam. One split is reflected the other goes straight through.</value>
+  </data>
+  <data name="instToolLine4" xml:space="preserve">
+    <value>The triangular splitter creates two beams out of one. </value>
+  </data>
+  <data name="instToolLine5" xml:space="preserve">
+    <value>The wood tool doesn't change the direction but the speed of the beam.</value>
+  </data>
+  <data name="instTools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="moreGamesURL" xml:space="preserve">
+    <value>http://apps.phoebit.com/games</value>
+  </data>
+  <data name="newsURL" xml:space="preserve">
+    <value>http://lars.msbase.de/news/news.php</value>
+  </data>
+  <data name="optionFreestyle" xml:space="preserve">
+    <value>Freestyle</value>
+  </data>
+  <data name="optionFX" xml:space="preserve">
+    <value>Fx</value>
+  </data>
+  <data name="optionHeader" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="optionLadder" xml:space="preserve">
+    <value>Ladder</value>
+  </data>
+  <data name="optionMusic" xml:space="preserve">
+    <value>Music</value>
+  </data>
+  <data name="optionName" xml:space="preserve">
+    <value>Enter Name</value>
+  </data>
+  <data name="optionsAudio" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="optionsMode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="optionsName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="phoebitURL" xml:space="preserve">
+    <value>http://apps.phoebit.com/</value>
+  </data>
+  <data name="username" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="welcomePlay" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="btnMaster" xml:space="preserve">
+    <value>Master</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>test</value>
+  </data>
+</root>

@@ -120,7 +120,7 @@ namespace MonkeyMadness
                 try
                 {
                     //var wbt = new Microsoft.Phone.Tasks.WebBrowserTask();
-                    //wbt.URL = Resource1.moreGamesURL;
+                    //wbt.URL = Resources.moreGamesURL;
                     //wbt.Show();
                     MarketplaceSearchTask marketplaceSearchTask = new MarketplaceSearchTask();
                     marketplaceSearchTask.SearchTerms = "Phoebit";
@@ -133,7 +133,7 @@ namespace MonkeyMadness
                 }
 #endif
 #if WINDOWS
-                    System.Diagnostics.Process.Start(Resource1.moreGamesURL);                                
+                    System.Diagnostics.Process.Start(Resources.moreGamesURL);                                
 #endif          */
             }        
                 

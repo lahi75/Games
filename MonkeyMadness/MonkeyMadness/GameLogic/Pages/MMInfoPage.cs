@@ -136,9 +136,9 @@ namespace MonkeyMadness
             position.X += tabX;
 
 //#if WINDOWS_PHONE
-//            DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoTilt, position, Color.Gold);            
+//            DrawShadowedString(spriteBatch, _smallFont, Resources.strInfoTilt, position, Color.Gold);            
 //#elif XBOX
-//            DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoXBoxRun, position, Color.Gold);               
+//            DrawShadowedString(spriteBatch, _smallFont, Resources.strInfoXBoxRun, position, Color.Gold);               
 //#endif
 //            position.Y = 170;
 
@@ -147,9 +147,9 @@ namespace MonkeyMadness
 //            position.Y = 200;
 
 //#if WINDOWS_PHONE
-//            DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoTap, position, Color.Gold);
+//            DrawShadowedString(spriteBatch, _smallFont, Resources.strInfoTap, position, Color.Gold);
 //#elif XBOX
-//            DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoXboxJump, position, Color.Gold);            
+//            DrawShadowedString(spriteBatch, _smallFont, Resources.strInfoXboxJump, position, Color.Gold);            
 //#endif
 //            position.Y = 230;
 
@@ -157,14 +157,14 @@ namespace MonkeyMadness
 
 //            position.Y = 260;
 
-            //DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoHowtoContent, position, Color.Gold);
+            //DrawShadowedString(spriteBatch, _smallFont, Resources.strInfoHowtoContent, position, Color.Gold);
 
             //_howtoLabel.SetPosition(position);
             //_howtoLabel.Draw(spriteBatch);
 
 
             // version label
-            //s = Resource1.strInfoGraphicsLabel + Resource1.strInfoGraphicsContent;            
+            //s = Resources.strInfoGraphicsLabel + Resources.strInfoGraphicsContent;            
 
             position.X = 50;
             position.Y = 150;
@@ -189,7 +189,7 @@ namespace MonkeyMadness
             //_soundjayLabel.SetPosition(position);
             //_soundjayLabel.Draw(spriteBatch);
 
-            //DrawShadowedString(spriteBatch, _smallFont, Resource1.strInfoAudioContent, position, Color.Gold);
+            //DrawShadowedString(spriteBatch, _smallFont, Resources.strInfoAudioContent, position, Color.Gold);
            
             _buttonExit.Draw(spriteBatch, _font);            
         }
