@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaserLeisure", "LaserLeisur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AircraftAction", "AircraftAction\AircraftAction\AircraftAction.csproj", "{524B2B07-4C79-4BA6-B2C1-C7C9073B4CE8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoolPanic", "PoolPanic\PoolPanic\PoolPanic.csproj", "{419CD46D-CB1D-44F9-A1A9-750A5C3A4BBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{524B2B07-4C79-4BA6-B2C1-C7C9073B4CE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{524B2B07-4C79-4BA6-B2C1-C7C9073B4CE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{524B2B07-4C79-4BA6-B2C1-C7C9073B4CE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{419CD46D-CB1D-44F9-A1A9-750A5C3A4BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{419CD46D-CB1D-44F9-A1A9-750A5C3A4BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{419CD46D-CB1D-44F9-A1A9-750A5C3A4BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{419CD46D-CB1D-44F9-A1A9-750A5C3A4BBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
