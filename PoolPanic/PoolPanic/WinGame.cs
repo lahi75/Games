@@ -11,16 +11,19 @@ namespace PoolPanic
         SpriteBatch spriteBatch;
 
         PPGameMain _game;
-        TGGameLibrary.TGMouse _mouse;
+        PPMouse _mouse;
 
         public WinGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            graphics.PreferredBackBufferWidth = 2000;
-            graphics.PreferredBackBufferHeight = 1000;
+             graphics.PreferredBackBufferWidth = 1900;
+             graphics.PreferredBackBufferHeight = 1200;
 
+            //graphics.ToggleFullScreen();
+            graphics.ApplyChanges();
+           
             TargetElapsedTime = TimeSpan.FromTicks(333333);
         }
 
@@ -37,11 +40,7 @@ namespace PoolPanic
             base.Initialize();
 
             string s = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
-            //_game.SetVersion(s);
-
-            // initialize with the logon name, ignore the domain name, take just the user            
-            //_game.SetName(System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\')[1]);
+            _game.SetVersion(s);            
         }
 
 
@@ -54,7 +53,7 @@ namespace PoolPanic
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _mouse = new TGGameLibrary.TGMouse(new Vector2(0, 0), this.Content.Load<Texture2D>("images/cursor"));
+            _mouse = new PPMouse(new Vector2(0, 0), this.Content.Load<Texture2D>("images/cursor"));
 
             Rectangle r = new Rectangle(graphics.GraphicsDevice.Viewport.X, graphics.GraphicsDevice.Viewport.Y, graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height);
             Rectangle titleSafe = r;
@@ -112,12 +111,10 @@ namespace PoolPanic
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+                  
             spriteBatch.Begin();
 
-            _game.Draw(spriteBatch, gameTime);
-
-           
+            _game.Draw(spriteBatch, gameTime);           
             _mouse.Draw(spriteBatch);
 
             spriteBatch.End();

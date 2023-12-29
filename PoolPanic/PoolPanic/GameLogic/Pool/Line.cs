@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
 
 namespace PoolPanic
 {
@@ -43,11 +40,7 @@ namespace PoolPanic
             _x2 = p2.X;
             _y2 = p2.Y;
         }
-
-        /// <summary>
-        /// calulate the intersection point and the angle between 2 lines
-        /// http://local.wasp.uwa.edu.au/~pbourke/geometry/lineline2d
-        /// </summary>
+              
         /// <param name="line">line to test with</param>
         /// <param name="result">intersection point</param>
         /// <param name="angle">angle between the two lines</param>

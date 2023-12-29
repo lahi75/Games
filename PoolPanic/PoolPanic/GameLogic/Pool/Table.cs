@@ -149,9 +149,8 @@ namespace PoolPanic
             if (input.Intersec(right, ref result, ref angle))
             {
                 if (InBetween(result, input.P1, input.P2))
-                {
-                    
-                        if (_rectangle.Contains(result))
+                {                    
+                    if (_rectangle.Contains(result))
                     {
                         input.UpdateP2(result);
                         return;
@@ -208,10 +207,8 @@ namespace PoolPanic
             if (b.Position.Y - b.Radius < _rectangle.Top + 50)
                 b.Position = new Vector2(b.Position.X, _rectangle.Top + b.Radius + 50);
 
-
             if (b.Position.Y + b.Radius > _rectangle.Bottom - 50)
                 b.Position = new Vector2(b.Position.X, _rectangle.Bottom - b.Radius - 50);
-
         }
 
         /// <summary>

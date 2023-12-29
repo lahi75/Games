@@ -1,14 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using System.IO;
-using Microsoft.Xna.Framework.Media;
-using System.Globalization;
-using System.Threading;
+using System;
 
 namespace PoolPanic
 {
@@ -28,51 +20,29 @@ namespace PoolPanic
             exit,
             noresult
         }
-
-        int _songIndex = 0;
-
+        
         double _debounceStart = 0;
-        
-        Rectangle _screenRect;        
-        IServiceProvider Services;
-        ContentManager _content;
-        Game _gameMain;
-        GameState _currentState = GameState.Menu;
+                                
+        GameState _currentState = GameState.Menu;        
 
-        const Int32 _maxNameLength = 12;
+        PPCore _game;        
 
-        PPCore _game;
-        
-
-        PPWelcomePage _welcomePage;
-        
-        CultureInfo _oldCulture;        
+        PPWelcomePage _welcomePage;                        
 
         public PPGameMain(Game gameMain, IServiceProvider serviceProvider, Rectangle screenRect, Rectangle titleSafe)
-        {
-            _oldCulture = Thread.CurrentThread.CurrentUICulture;
-       
-            Services = serviceProvider;
-            _content = new ContentManager(serviceProvider, "Content");            
-                        
+        {                                                              
             FxManager.LoadSettings(gameMain);
             
-
-            _gameMain = gameMain;
-            _screenRect = screenRect;
-
-            _game = new PPCore(gameMain, Services, screenRect, titleSafe);
+            _game = new PPCore(gameMain, serviceProvider, screenRect, titleSafe);
         
-
-            _welcomePage = new PPWelcomePage(Services, screenRect, titleSafe, _oldCulture.Parent.TwoLetterISOLanguageName);
-                        
+            _welcomePage = new PPWelcomePage(serviceProvider, screenRect, titleSafe);                        
         }
         
-
         public GameResult Update(GameTime gameTime, Point position, Boolean clickDown)
         {           
             switch (_currentState)
             {
+                default:
                 case GameState.Menu:
                     {                        
                         switch (_welcomePage.Update(gameTime, position, clickDown))
@@ -80,9 +50,11 @@ namespace PoolPanic
                             case PPWelcomePage.WelcomeResult.exit:
                                 return GameResult.exit;
                             case PPWelcomePage.WelcomeResult.play8:
+                                _game.Init(PPCore.GameMode.Ball8);
                                 _currentState = GameState.Play8;
                                 break;
                             case PPWelcomePage.WelcomeResult.play9:
+                                _game.Init(PPCore.GameMode.Ball9);
                                 _currentState = GameState.Play9;
                                 break;
                         }
@@ -90,29 +62,25 @@ namespace PoolPanic
                     break;
                 case GameState.Play8:
                     {
-                        _game.Update(gameTime, position, clickDown);
+                        if (_game.Update(gameTime, position, clickDown) == PPCore.GameResult.exit)
+                            _currentState = GameState.Menu;
                     }
-
                     break;
-
                 case GameState.Play9:
                     {
-                        _game.Update(gameTime, position, clickDown);
+                        if (_game.Update(gameTime, position, clickDown) == PPCore.GameResult.exit)
+                            _currentState = GameState.Menu;
                     }
-
-                    break;
-
-                default:
-                    break;
+                    break;                
             }
 
             return GameResult.noresult;
         }
 
-          
-
-        
-        
+        public void SetVersion(string s)
+        {
+            _welcomePage.SetVersion(s);
+        }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
@@ -121,8 +89,8 @@ namespace PoolPanic
                 case GameState.Menu:
                     _welcomePage.Draw(spriteBatch);
                     break;
-                case GameState.Play8:                    
-                    _game.Draw(spriteBatch,gameTime);
+                case GameState.Play8:                     
+                    _game.Draw(spriteBatch,gameTime);                                        
                     break;
                 case GameState.Play9:
                     _game.Draw(spriteBatch, gameTime);
@@ -135,16 +103,18 @@ namespace PoolPanic
         public Boolean Back(GameTime time)
         {
             if (!Debounce(time))
-                return false;
-            
+                return false;            
 
             switch (_currentState)
             {
                 case GameState.Menu:
                     return true;
-                case GameState.Play8:
-                    //_optionsPage.Back();
-                    break;                
+                case GameState.Play8:                    
+                    _game.Back(time);
+                    break;
+                case GameState.Play9:
+                    _game.Back(time);
+                    break;
             }
 
             return false;               

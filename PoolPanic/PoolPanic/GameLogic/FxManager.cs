@@ -2,10 +2,8 @@
 using Microsoft.Xna.Framework.Audio;
 using System;
 
-
 namespace PoolPanic
 {
-
     public class PoolFX
     {
         public PoolFX()
@@ -33,8 +31,7 @@ namespace PoolPanic
                 return;
 
             if (volume < 0.3)
-                volume = 0.3f;
-            //_clash.Volume = volume;
+                volume = 0.3f;            
             _clash.Play();
         }
 

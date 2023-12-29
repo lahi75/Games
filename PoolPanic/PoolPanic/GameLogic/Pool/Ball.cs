@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
-
 namespace PoolPanic
 {
     /// <summary>
@@ -19,14 +18,14 @@ namespace PoolPanic
         private Vector2 _holePosition;
         private bool _inHole = false;
         private int _inHoleTime = 1500;
+        private float _scalingFactor = 2.0f;
               
         // create the ball using an initial position and give the ball a number from 0 to 15
         public Ball(ContentManager content, Vector2 position, Int32 number)
         {                       
             _texture = content.Load<Texture2D>("images/ball" + number);
-
             
-            Radius = _texture.Width/2;
+            Radius = _texture.Width/(2*_scalingFactor)-1;
             Position = position;
             Speed = new Vector2(0, 0);
             Rotation = 0.0f;            
@@ -261,11 +260,9 @@ namespace PoolPanic
         /// </summary>        
         public void Draw(SpriteBatch spriteBatch, GameTime DrawTime)
         {
-            //float speed = (float)Speed.Length();            
-            //Rotation += (speed / 3 * 2.0f) / 1000;            
-            spriteBatch.Draw(_texture, Position, null, Color.White, Rotation, new Vector2(Radius, Radius), 0.5f, SpriteEffects.None, 1.0f);
-            
-          
+            float speed = (float)Speed.Length();            
+            Rotation += (speed / 3 * 2.0f) / 1000;            
+            spriteBatch.Draw(_texture, Position, null, Color.White, Rotation, new Vector2(Radius*_scalingFactor, Radius*_scalingFactor), (1.0f/_scalingFactor), SpriteEffects.None, 1.0f);                      
         }
 
         /// <summary>

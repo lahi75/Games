@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace TGGameLibrary
+namespace PoolPanic
 {
-    public class TGMouse
+    public class PPMouse
     {
         private Vector2 _position;
         private Texture2D _cursorTextue;
@@ -15,7 +15,7 @@ namespace TGGameLibrary
         /// </summary>
         /// <param name="position">initial cursor position</param>
         /// <param name="cursorTextue">texture of cursor</param>
-        public TGMouse(Vector2 position, Texture2D cursorTextue)
+        public PPMouse(Vector2 position, Texture2D cursorTextue)
         {
             _position = position;           //Inital pos (0,0)
             _cursorTextue = cursorTextue;   //Cursor texture
@@ -27,7 +27,6 @@ namespace TGGameLibrary
         public void Update()
         {
             _mouseState = Mouse.GetState(); //Needed to find the most current mouse states.
-
             _position.X = _mouseState.X; //Change x pos to mouseX
             _position.Y = _mouseState.Y; //Change y pos to mouseY            
         }
@@ -36,17 +35,5 @@ namespace TGGameLibrary
         {
             batch.Draw(_cursorTextue, _position, Color.White); //Draw it using the batch.
         }
-
-        /*
-        public bool ButtonClick(Button b)
-        {
-            if (this.pos.X >= b.position.X // To the right of the left side
-            && this.pos.X < b.position.X + b.tex.Width //To the left of the right side
-            && this.pos.Y > b.position.Y //Below the top side
-            && this.pos.Y < b.position.Y + b.tex.Height) //Above the bottom side
-                return true; //We are; return true.
-            else
-                return false; //We're not; return false.
-        } */
     }
 }

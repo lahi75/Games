@@ -35,15 +35,14 @@ namespace PoolPanic
 
         public PPButton(ContentManager Content, string text, bool checkButton, bool radioButton)
         {
-            _textureDefault = Content.Load<Texture2D>("buttons/button_default");
-            _textureHover = Content.Load<Texture2D>("buttons/button_default_hover");
-            _texturePressed = Content.Load<Texture2D>("buttons/button_pressed");
-            _textureHoverPressed = Content.Load<Texture2D>("buttons/button_pressed_hover");          
+            _textureDefault = Content.Load<Texture2D>("images/pbutton");
+            _textureHover = Content.Load<Texture2D>("images/pbutton");
+            _texturePressed = Content.Load<Texture2D>("images/pbutton");
+            _textureHoverPressed = Content.Load<Texture2D>("images/pbutton");          
             _text = text;
             _checkButton = checkButton;
             _radioButton = radioButton;
             _position = new Vector2(0, 0);
-
 
             _buttonNoise = Content.Load<SoundEffect>("sounds/button-27");
             _buttonInstance = _buttonNoise.CreateInstance();
@@ -92,12 +91,11 @@ namespace PoolPanic
             Rectangle pos = GetRect();
             
             // play noise on start hover
-            //if (pos.Contains(mousePosition) && _isHovered == false)
-            //        _hoverInstance.Play();                
+          //  if (pos.Contains(mousePosition) && _isHovered == false)
+          //          _hoverInstance.Play();                
 
             if (mousePosition.X != -1 && mousePosition.Y != -1)
                 _isHovered = pos.Contains(mousePosition);
-
 
             if (_checkButton)
             {
@@ -142,9 +140,7 @@ namespace PoolPanic
                     return true;
                 }
             }
-
            
-
             return false;
         }
 
@@ -162,6 +158,8 @@ namespace PoolPanic
         public void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
 
+            Color fontColor = Color.WhiteSmoke;
+
             if (!_isHovered && !_isPressed)
             {
                 //draw default texture
@@ -171,11 +169,14 @@ namespace PoolPanic
             {
                 //draw hoveredPressed texture
                 spriteBatch.Draw(_textureHoverPressed, _position, Color.White);
+
+                fontColor = Color.Red;
             }
             else if (_isHovered)
             {
                 //draw hovered texture
                 spriteBatch.Draw(_textureHover, _position, Color.White);
+                fontColor = Color.PowderBlue;
             }
             else
             {
@@ -188,8 +189,7 @@ namespace PoolPanic
             Rectangle buttonPos = new Rectangle((int)_position.X, (int)_position.Y, _textureDefault.Width, _textureDefault.Height);
             Vector2 textPos = new Vector2(buttonPos.X + buttonPos.Width / 2 - fontSize.X / 2, buttonPos.Y + buttonPos.Height / 2 - fontSize.Y / 2);
             
-            spriteBatch.DrawString(font, _text, textPos, Color.WhiteSmoke);
-            
+            spriteBatch.DrawString(font, _text, textPos, fontColor);            
         }        
          
         private bool _isHovered = false;

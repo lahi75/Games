@@ -2,9 +2,6 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Windows.Forms.VisualStyles;
-
 
 namespace PoolPanic
 {
@@ -70,18 +67,17 @@ namespace PoolPanic
             // direction of the red line
             float rot = (float)l.GetRotation(); 
 
-            //spriteBatch.Draw(_line, new Rectangle((int)l.P1.X, (int)l.P1.Y, (int)length, _line.Width), new Rectangle(0, 0, _line.Width, _line.Height), Color.White, rot, new Vector2(_line.Width, _line.Height), SpriteEffects.None, ImageOrientation.AsIs, 0.0f);
+            spriteBatch.Draw(_line, new Rectangle((int)l.P1.X, (int)l.P1.Y, (int)length, _line.Width), new Rectangle(0, 0, _line.Width, _line.Height), Color.White, rot, new Vector2(_line.Width, _line.Height), SpriteEffects.None, 0.0f);
             
             // make sure the red line aligns with the middle of the ball
             Vector2 p = new Vector2(_p1.X + (float)((_animatedCueHeight / 2) * Math.Sin(rot)), _p1.Y - (float)((_animatedCueHeight / 2) * Math.Cos(rot)));                        
-
 
             float time;
             
             if(_state == CueState.Aim)
                 time = 0;                 // always draw the first cue of the animation when aiming
             else            
-                time = (float)DrawTime.ElapsedGameTime.TotalSeconds - _startTime;            // animate the cue
+                time = (float)(DrawTime.TotalGameTime.TotalSeconds) - _startTime;            // animate the cue
 
             // get the right cue from the asset
             var sourceRectangle = GetCueAnimation(2.00f * time);
@@ -140,7 +136,6 @@ namespace PoolPanic
         {
             float speed = _maxSpeed * power;
                 
-
             Line l = new Line(GetOrigin(), GetCurrent());
             float rot = (float)l.GetRotation();
             float x = (float)Math.Cos(rot) * speed;
@@ -161,7 +156,7 @@ namespace PoolPanic
         /// <summary>
         /// get the origin of the cue
         /// </summary>        
-        private Vector2 GetOrigin()
+        public Vector2 GetOrigin()
         {
             return _p1;
         }
@@ -169,7 +164,7 @@ namespace PoolPanic
         /// <summary>
         /// get the second point of the cue
         /// </summary>        
-        private Vector2 GetCurrent()
+        public Vector2 GetCurrent()
         {
             return _p2;
         }             

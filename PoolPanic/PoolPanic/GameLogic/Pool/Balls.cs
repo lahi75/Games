@@ -18,7 +18,6 @@ namespace PoolPanic
         List<Ball> _balls = new List<Ball>();
         private float _damping = 80.0f; // 80% speed _damping per second
 
-
         public Balls()
         {
         }
@@ -30,10 +29,10 @@ namespace PoolPanic
         {
             _balls.Clear();
 
-            int x = 200 + 10;
-            int y = 300 + 10;
+            int x = table.X + 100;
+            int y = table.Y + 100;
             int ballwidth;
-
+                        
             for (int i = 0; i < 16; i++)
             {
                 Vector2 pos = new Vector2(x, y);
@@ -274,7 +273,7 @@ namespace PoolPanic
              
                 if(b1.Active)                
                     table.BounceBorder(b1);
-
+                
                 // check collision with each of the other balls
                 foreach (Ball b2 in _balls)
                 {
