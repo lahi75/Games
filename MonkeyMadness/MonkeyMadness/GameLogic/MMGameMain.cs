@@ -39,21 +39,8 @@ namespace MonkeyMadness
         Int32 _currentSong = -2;
         Boolean _trial = false;
         const Int32 _maxNameLength = 10;
-
         
-
-        Game _gameMain;
-
-        
-
-        //Only for button testing on windows
-        //[System.Runtime.InteropServices.DllImport("user32.dll")]
-        //public static extern uint MessageBox(IntPtr hWnd, String text, String caption, uint type);
-
-        public void SetTrial( Boolean trial )
-        {
-            _trial = trial;                                    
-        }
+        Game _gameMain;        
 
         //Rectangle titleSafe;        
 

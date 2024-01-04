@@ -101,7 +101,6 @@ namespace MonkeyMadness
             }
         }
 
-
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.White);
